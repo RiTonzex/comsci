@@ -298,7 +298,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. Initialize Magnetic Action Buttons
   initMagneticButtons();
 
-  // 4. Initialize Scroll Reveal System & Stats Counter (delayed to ensure layout renders)
+  // 4. Initialize Aurora Glowing Background Orbs
+  initAuroraBackground();
+
+  // 5. Initialize Scroll Reveal System & Stats Counter (delayed to ensure layout renders)
   setTimeout(() => {
     initScrollReveal();
     initStatsCounter();
@@ -588,5 +591,21 @@ function initMagneticButtons() {
       btn.style.transform = '';
     });
   });
+}
+
+// --- 7. Aurora Background Orbs Injector ---
+function initAuroraBackground() {
+  const container = document.createElement('div');
+  container.className = 'bg-glow-container';
+  
+  const orb1 = document.createElement('div');
+  orb1.className = 'bg-glow-orb bg-glow-orb-1';
+  
+  const orb2 = document.createElement('div');
+  orb2.className = 'bg-glow-orb bg-glow-orb-2';
+  
+  container.appendChild(orb1);
+  container.appendChild(orb2);
+  document.body.insertBefore(container, document.body.firstChild);
 }
 
