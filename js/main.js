@@ -295,7 +295,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Initialize Mouse Tracking for Card Glow Effect
   initCardGlowEffect();
 
-  // 3. Initialize Scroll Reveal System & Stats Counter (delayed to ensure layout renders)
+  // 3. Initialize Interactive Particle Background
+  initHeroParticles();
+
+  // 4. Initialize Magnetic Action Buttons
+  initMagneticButtons();
+
+  // 5. Initialize Scroll Reveal System & Stats Counter (delayed to ensure layout renders)
   setTimeout(() => {
     initScrollReveal();
     initStatsCounter();
@@ -474,5 +480,166 @@ function initStatsCounter() {
   }, { threshold: 0.1 });
 
   statsObserver.observe(statsSection);
+}
+
+// --- 5. Interactive Particle Canvas Background ---
+function initHeroParticles() {
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+
+  // Create canvas
+  const canvas = document.createElement('canvas');
+  canvas.id = 'hero-canvas';
+  hero.insertBefore(canvas, hero.firstChild); // Place at the back of the hero container
+
+  const ctx = canvas.getContext('2d');
+  let animationFrameId;
+
+  // Set canvas size dynamically
+  function resizeCanvas() {
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  // Particle configuration
+  const particles = [];
+  const particleCount = 60; // Sleek and professional particle count
+  const connectionDistance = 120;
+  const mouse = { x: null, y: null, radius: 150 };
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.7;
+      this.vy = (Math.random() - 0.5) * 0.7;
+      this.size = Math.random() * 2 + 1;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      // Bounce off walls and clamp bounds
+      if (this.x < 0) { this.x = 0; this.vx = -this.vx; }
+      else if (this.x > canvas.width) { this.x = canvas.width; this.vx = -this.vx; }
+      
+      if (this.y < 0) { this.y = 0; this.vy = -this.vy; }
+      else if (this.y > canvas.height) { this.y = canvas.height; this.vy = -this.vy; }
+
+      // Mouse interaction (repel particles)
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = this.x - mouse.x;
+        const dy = this.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < mouse.radius) {
+          const force = (mouse.radius - dist) / mouse.radius;
+          const angle = Math.atan2(dy, dx);
+          this.x += Math.cos(angle) * force * 1.5;
+          this.y += Math.sin(angle) * force * 1.5;
+        }
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(96, 165, 250, 0.3)'; // Primary blue particle color
+      ctx.fill();
+    }
+  }
+
+  // Generate particles
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  // Mouse event listeners for interaction
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  // Animation Loop
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Update and draw particles
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+
+    // Draw connecting constellation lines
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < connectionDistance) {
+          const alpha = (1 - dist / connectionDistance) * 0.15;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`; // Indigo constellation line
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    }
+
+    animationFrameId = requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+// --- 6. Magnetic Button Effect ---
+function initMagneticButtons() {
+  const buttons = document.querySelectorAll('.btn-primary');
+
+  buttons.forEach(btn => {
+    // Add magnetic class to trigger transition easing
+    btn.classList.add('magnetic');
+
+    document.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const btnX = rect.left + rect.width / 2;
+      const btnY = rect.top + rect.height / 2;
+
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const dx = mouseX - btnX;
+      const dy = mouseY - btnY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      const threshold = 75; // Proximity to activate the pull
+
+      if (dist < threshold) {
+        const pull = (threshold - dist) / threshold;
+        const moveX = dx * pull * 0.35;
+        const moveY = dy * pull * 0.35;
+
+        btn.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.03)`;
+      } else {
+        btn.style.transform = '';
+      }
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
 }
 
