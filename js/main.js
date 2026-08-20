@@ -301,10 +301,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Initialize Aurora Glowing Background Orbs
   initAuroraBackground();
 
-  // 5. Initialize Robot Floating Backdrop
+  // 5. Initialize Robot Floating Backdrop (Hero Section)
   initRobotBackdrop();
 
-  // 6. Initialize Scroll Reveal System & Stats Counter (delayed to ensure layout renders)
+  // 6. Initialize Robot Head Floating Backdrop (Downloads Section)
+  initDownloadsBackdrop();
+
+  // 7. Initialize Scroll Reveal System & Stats Counter (delayed to ensure layout renders)
   setTimeout(() => {
     initScrollReveal();
     initStatsCounter();
@@ -623,5 +626,18 @@ function initRobotBackdrop() {
   img.alt = 'Robot Hologram';
   
   hero.appendChild(img);
+}
+
+// --- 9. Dynamic Downloads Robot Backdrop Injector ---
+function initDownloadsBackdrop() {
+  const downloadsSection = document.getElementById('downloads');
+  if (!downloadsSection) return;
+
+  const img = document.createElement('img');
+  img.src = 'images/robot_head_background.png';
+  img.className = 'bg-robot-head';
+  img.alt = 'Robot Brain Blueprint';
+
+  downloadsSection.appendChild(img);
 }
 
