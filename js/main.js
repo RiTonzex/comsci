@@ -289,75 +289,22 @@ if (navToggle && navMenu) {
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Typing Effect
-  initTypingEffect();
-
-  // 2. Initialize Mouse Tracking for Card Glow Effect
+  // 1. Initialize Mouse Tracking for Card Glow Effect
   initCardGlowEffect();
 
-  // 3. Initialize Interactive Particle Background
+  // 2. Initialize Interactive Particle Background
   initHeroParticles();
 
-  // 4. Initialize Magnetic Action Buttons
+  // 3. Initialize Magnetic Action Buttons
   initMagneticButtons();
 
-  // 5. Initialize Scroll Reveal System & Stats Counter (delayed to ensure layout renders)
+  // 4. Initialize Scroll Reveal System & Stats Counter (delayed to ensure layout renders)
   setTimeout(() => {
     initScrollReveal();
     initStatsCounter();
   }, 100);
 });
 
-// --- 1. Typing Effect ---
-function initTypingEffect() {
-  const heroDesc = document.querySelector('.hero-desc');
-  if (!heroDesc) return;
-
-  const originalText = heroDesc.innerHTML;
-  const targetPhrase = 'สร้างสรรค์ซอฟต์แวร์แห่งนวัตกรรม';
-  
-  if (originalText.includes(targetPhrase)) {
-    heroDesc.innerHTML = originalText.replace(
-      targetPhrase,
-      `<span id="typing-target"></span>`
-    );
-
-    const words = ["สร้างสรรค์ซอฟต์แวร์", "ผู้เชี่ยวชาญ AI", "โปรแกรมเมอร์ Full-Stack"];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typingTarget = document.getElementById('typing-target');
-    const typingSpeed = 100;
-    const deletingSpeed = 50;
-    const delayBetweenWords = 2500;
-
-    function type() {
-      const currentWord = words[wordIndex];
-      if (isDeleting) {
-        typingTarget.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        typingTarget.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-      }
-
-      let delay = isDeleting ? deletingSpeed : typingSpeed;
-
-      if (!isDeleting && charIndex === currentWord.length) {
-        delay = delayBetweenWords;
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        delay = 400;
-      }
-
-      setTimeout(type, delay);
-    }
-
-    type();
-  }
-}
 
 // --- 2. Card Glow Effect (Mouse Move Tracking - Optimized) ---
 function initCardGlowEffect() {
