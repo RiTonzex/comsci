@@ -330,3 +330,115 @@ section {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+
+/* ==========================================================================
+   MOTION & ANIMATIONS SYSTEM (ความรับผิดชอบ: คนที่ 1)
+   ========================================================================== */
+
+/* 1. Scroll Reveal Animation Classes */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 2. Typing Effect blinking cursor */
+#typing-target {
+  border-right: 2px solid var(--primary-blue);
+  padding-right: 4px;
+  font-weight: 600;
+  color: #60a5fa;
+  animation: typing-blink 0.75s step-end infinite;
+}
+
+@keyframes typing-blink {
+  from, to { border-color: transparent }
+  50% { border-color: var(--primary-blue); }
+}
+
+/* 3. Smooth Hover Micro-interactions (Shine effect & Scale) */
+.card-dark, .btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Refined transitions for smoother interactions */
+.card-dark {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-dark:hover {
+  transform: translateY(-5px) scale(1.015);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-hover);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.45);
+}
+
+/* Shine Sweep Overlay */
+.card-dark::after, .btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 30%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.08) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 5;
+}
+
+.card-dark:hover::after, .btn-primary:hover::after {
+  opacity: 1;
+  left: 130%;
+  transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mouse-tracking Hover Glow for cards */
+.card-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+    rgba(59, 130, 246, 0.1),
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card-dark:hover::before {
+  opacity: 1;
+}

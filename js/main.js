@@ -283,3 +283,196 @@ if (navToggle && navMenu) {
     });
   });
 }
+
+// ==========================================================================
+// MOTION & ANIMATIONS MODULE (ความรับผิดชอบ: คนที่ 1)
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Initialize Typing Effect
+  initTypingEffect();
+
+  // 2. Initialize Mouse Tracking for Card Glow Effect
+  initCardGlowEffect();
+
+  // 3. Initialize Scroll Reveal System & Stats Counter (delayed to ensure layout renders)
+  setTimeout(() => {
+    initScrollReveal();
+    initStatsCounter();
+  }, 100);
+});
+
+// --- 1. Typing Effect ---
+function initTypingEffect() {
+  const heroDesc = document.querySelector('.hero-desc');
+  if (!heroDesc) return;
+
+  const originalText = heroDesc.innerHTML;
+  const targetPhrase = 'สร้างสรรค์ซอฟต์แวร์แห่งนวัตกรรม';
+  
+  if (originalText.includes(targetPhrase)) {
+    heroDesc.innerHTML = originalText.replace(
+      targetPhrase,
+      `<span id="typing-target"></span>`
+    );
+
+    const words = ["สร้างสรรค์ซอฟต์แวร์", "ผู้เชี่ยวชาญ AI", "โปรแกรมเมอร์ Full-Stack"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingTarget = document.getElementById('typing-target');
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const delayBetweenWords = 2500;
+
+    function type() {
+      const currentWord = words[wordIndex];
+      if (isDeleting) {
+        typingTarget.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingTarget.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let delay = isDeleting ? deletingSpeed : typingSpeed;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        delay = delayBetweenWords;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        delay = 400;
+      }
+
+      setTimeout(type, delay);
+    }
+
+    type();
+  }
+}
+
+// --- 2. Card Glow Effect (Mouse Move Tracking - Optimized) ---
+function initCardGlowEffect() {
+  document.addEventListener('mousemove', (e) => {
+    const card = e.target.closest('.card-dark');
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+}
+
+// --- 3. Scroll Reveal System ---
+function initScrollReveal() {
+  const revealTargets = document.querySelectorAll('.card-dark, .section-header, .hero-text, .hero-visual');
+  
+  revealTargets.forEach(el => {
+    el.classList.add('scroll-reveal');
+  });
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    const groups = new Map();
+
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        if (el.classList.contains('revealed')) return;
+
+        const parent = el.parentElement || document.body;
+        if (!groups.has(parent)) {
+          groups.set(parent, []);
+        }
+        groups.get(parent).push(el);
+        observer.unobserve(el);
+      }
+    });
+
+    groups.forEach((elements) => {
+      elements.sort((a, b) => {
+        return a.getBoundingClientRect().top - b.getBoundingClientRect().top || 
+               a.getBoundingClientRect().left - b.getBoundingClientRect().left;
+      });
+
+      elements.forEach((el, index) => {
+        el.style.transitionDelay = `${index * 100}ms`;
+        el.classList.add('revealed');
+        
+        el.addEventListener('transitionend', function handler() {
+          el.style.transitionDelay = '';
+          el.removeEventListener('transitionend', handler);
+        });
+      });
+    });
+  }, {
+    threshold: 0.05,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealTargets.forEach(el => revealObserver.observe(el));
+}
+
+// --- 4. Stats Counter Animation ---
+function initStatsCounter() {
+  const statsSection = document.querySelector('.hero-stats');
+  if (!statsSection) return;
+
+  const animateCounters = () => {
+    const statElements = document.querySelectorAll('.hero-stats .stat-item h4');
+    const duration = 1500; // 1.5 seconds
+
+    statElements.forEach(el => {
+      const originalText = el.textContent.trim();
+      const match = originalText.match(/([\d,]+)/);
+      if (!match) return;
+
+      const rawNum = match[0];
+      const target = parseInt(rawNum.replace(/,/g, ''), 10);
+      const firstIndex = originalText.indexOf(rawNum);
+      const prefix = originalText.substring(0, firstIndex);
+      const suffix = originalText.substring(firstIndex + rawNum.length);
+      const hasComma = rawNum.includes(',');
+
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const easeProgress = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        
+        const currentValue = Math.floor(easeProgress * target);
+        
+        let formattedVal = currentValue;
+        if (hasComma) {
+          formattedVal = currentValue.toLocaleString('en-US');
+        }
+
+        el.textContent = prefix + formattedVal + suffix;
+
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          el.textContent = originalText;
+        }
+      };
+
+      el.textContent = prefix + "0" + suffix;
+      window.requestAnimationFrame(step);
+    });
+  };
+
+  const statsObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  statsObserver.observe(statsSection);
+}
+
