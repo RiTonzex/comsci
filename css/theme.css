@@ -488,3 +488,33 @@ section[style*="bg-secondary"] {
   background: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.08) 0%, rgba(11, 15, 23, 0) 60%), 
               transparent !important;
 }
+
+/* 8. Floating Robot Backdrop Animation */
+.bg-robot {
+  position: absolute;
+  bottom: 5%;
+  right: -5%;
+  width: 500px;
+  max-width: 40%;
+  height: auto;
+  opacity: 0.1; /* Faint glowing hologram */
+  pointer-events: none;
+  z-index: 0;
+  transform-origin: center;
+  animation: float-robot 20s infinite alternate ease-in-out;
+}
+
+@keyframes float-robot {
+  0% { transform: translateY(0) rotate(0deg) scale(1); }
+  50% { transform: translateY(-25px) rotate(2deg) scale(1.03); }
+  100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+
+@media (max-width: 992px) {
+  .bg-robot {
+    width: 350px;
+    right: -10%;
+    bottom: 2%;
+    opacity: 0.07;
+  }
+}

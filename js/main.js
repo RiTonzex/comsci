@@ -301,7 +301,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Initialize Aurora Glowing Background Orbs
   initAuroraBackground();
 
-  // 5. Initialize Scroll Reveal System & Stats Counter (delayed to ensure layout renders)
+  // 5. Initialize Robot Floating Backdrop
+  initRobotBackdrop();
+
+  // 6. Initialize Scroll Reveal System & Stats Counter (delayed to ensure layout renders)
   setTimeout(() => {
     initScrollReveal();
     initStatsCounter();
@@ -607,5 +610,18 @@ function initAuroraBackground() {
   container.appendChild(orb1);
   container.appendChild(orb2);
   document.body.insertBefore(container, document.body.firstChild);
+}
+
+// --- 8. Dynamic Robot Backdrop Injector ---
+function initRobotBackdrop() {
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+  
+  const img = document.createElement('img');
+  img.src = 'images/robot_background.png';
+  img.className = 'bg-robot';
+  img.alt = 'Robot Hologram';
+  
+  hero.appendChild(img);
 }
 
