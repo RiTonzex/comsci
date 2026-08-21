@@ -1,43 +1,60 @@
 /* ==========================================================================
    DESIGN SYSTEM & THEME TOKENS (:root)
    สาขาวิชาวิทยาการคอมพิวเตอร์ มรภ.ศรีสะเกษ (CS SSKRU)
-   Theme: Sleek & Modern Dark Tech (Minimalist & Professional)
+   Theme: Prestigious University Academic Style with CS SSKRU Brand Colors
    ========================================================================== */
 
 :root {
-  /* 🎨 1. พื้นหลังและโครงสร้างหลัก (Dark Surfaces) */
-  --bg-main: #0b0f17;              /* พื้นหลังหลัก ดำมิดไนท์สุขุม */
-  --bg-secondary: #111827;         /* พื้นหลังส่วนรอง (Deep Charcoal) */
-  --bg-card: #151d30;              /* พื้นหลังการ์ด Dark Slate เรียบหรู */
-  --bg-card-hover: #1b253d;        /* การ์ดเวลาเอาเมาส์ชี้ */
-  --bg-card-glass: rgba(21, 29, 48, 0.75);
-  --bg-badge: rgba(59, 130, 246, 0.1);
+  /* 🎨 1. พื้นหลังและโครงสร้างหลัก (Academic Light Surfaces) */
+  --bg-main: #f8fafc;              /* พื้นหลังหลัก เทาขาวสะอาดตาสบายตา */
+  --bg-secondary: #ffffff;         /* พื้นหลังส่วนสลับ ขาวบริสุทธิ์ */
+  --bg-surface-subtle: #f1f5f9;    /* พื้นหลังบล็อกย่อย/สีเทาอ่อน */
+  --bg-card: #ffffff;              /* พื้นหลังการ์ด ขาวคลีน */
+  --bg-card-hover: #ffffff;        /* การ์ดเวลาเอาเมาส์ชี้ */
+  --bg-card-glass: rgba(255, 255, 255, 0.95);
+  --bg-badge: #fff7ed;
 
-  /* 💼 2. สีหลักและสีไฮไลท์ (Professional Tech Accent) */
-  --primary-blue: #3b82f6;         /* สีน้ำเงินเทคโนโลยีมาตรฐาน (Tailwind Blue 500) */
-  --primary-hover: #2563eb;        /* น้ำเงินเข้มขึ้นเวลา Hover */
-  --accent-indigo: #6366f1;        /* ม่วงคราม Indigo สุขุม */
+  /* 💼 2. สีหลักและสีไฮไลท์ (สีประจำสถาบัน: เหลืองทองสิริราชภัฏ + สีกรมท่ามหาวิทยาลัย) */
+  --primary-navy: #0f2b5c;         /* สีกรมท่ามหาวิทยาลัย สง่างาม น่าเชื่อถือ */
+  --primary-blue: #1a4480;         /* น้ำเงินสถาบันมาตรฐาน */
+  --primary-hover: #0a1c3d;        /* น้ำเงินเข้มเวลา Hover */
+  
+  /* สีเหลืองทองเอกลักษณ์ (Academic Bright Yellow & Gold) */
+  --accent-brand: #eab308;         /* สีเหลืองทองสว่างสดใส (Yellow 500) */
+  --accent-brand-yellow: #facc15;  /* สีเหลืองสด (Yellow 400) */
+  --accent-brand-dark: #a16207;    /* สีเหลืองทองเข้มสำหรับตัวหนังสือ (Amber/Yellow 700) */
+  --accent-brand-hover: #ca8a04;   /* สีเหลืองทองเข้มเวลา Hover (Yellow 600) */
+  --accent-brand-light: #fef9c3;   /* พื้นหลังเหลืองพาสเทลอ่อนละมุน (Yellow 100) */
+  --accent-brand-border: #fde047;  /* เส้นขอบเหลืองทอง (Yellow 300) */
+  --accent-gradient: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+
   --accent-teal: #0d9488;          /* เขียวอมฟ้าสุขุม */
-  --accent-success: #10b981;       /* เขียวสำเร็จการศึกษา / แล็บ */
+  --accent-success: #16a34a;       /* เขียวสำเร็จการศึกษา / แล็บ */
 
-  /* 📝 3. สีข้อความ (Clean Typography) */
-  --text-title: #f8fafc;           /* หัวข้อสีขาวสว่าง ชัดเจน */
-  --text-body: #94a3b8;            /* เนื้อหาเทาสว่างสบายตา (Slate 400) */
+  /* 📝 3. สีข้อความ (Crisp Academic Typography) */
+  --text-title: #0f172a;           /* หัวข้อสีน้ำเงินเข้มจัด/เกือบดำ คมชัด */
+  --text-body: #334155;            /* เนื้อหาสีเทาเข้ม Slate 700 อ่านง่าย */
   --text-muted: #64748b;           /* คำอธิบายรอง (Slate 500) */
   --text-white: #ffffff;
+  --text-link: #0f2b5c;
 
-  /* 🔲 4. เส้นขอบและเงา (Subtle Borders & Elevation) */
-  --border-subtle: rgba(255, 255, 255, 0.08); /* เส้นขอบบางเฉียบ */
-  --border-hover: rgba(59, 130, 246, 0.4);   /* เส้นขอบเมื่อเมาส์ชี้ */
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.35);
-  --shadow-hover: 0 14px 32px rgba(0, 0, 0, 0.5);
+  /* 🔲 4. เส้นขอบและเงา (Refined University Elevation) */
+  --border-subtle: #e2e8f0;        /* เส้นขอบบางเฉียบ */
+  --border-light: #cbd5e1;         /* เส้นขอบระดับปานกลาง */
+  --border-hover: #eab308;         /* เส้นขอบเมื่อเมาส์ชี้ */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 12px 30px rgba(15, 43, 92, 0.12);
+  --shadow-dropdown: 0 10px 30px rgba(0, 0, 0, 0.1);
 
   /* 📐 5. ฟอนต์และความโค้งมน (Typography & Radii) */
-  --font-heading: 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --font-heading: 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Sarabun', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-pill: 50px;
 }
 
@@ -53,20 +70,23 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 85px;
 }
 
 body {
   font-family: var(--font-body);
   background-color: var(--bg-main);
   color: var(--text-body);
-  line-height: 1.65;
+  line-height: 1.7;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: var(--font-heading);
   color: var(--text-title);
   line-height: 1.35;
+  font-weight: 600;
 }
 
 a {
@@ -77,119 +97,483 @@ a {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1260px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
 }
 
 section {
-  padding: 85px 0;
+  padding: 80px 0;
   position: relative;
 }
 
 /* ==========================================================================
-   REUSABLE UTILITY CLASSES (คลาสสำเร็จรูปโทน Dark เรียบหรู)
+   TOP UTILITY BAR (สไตล์ chula.ac.th)
    ========================================================================== */
-
-/* 1. การ์ดโทน Dark เรียบหรู (Dark Modern Card) */
-.card-dark {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  box-shadow: var(--shadow-card);
-  transition: all 0.25s ease;
+.top-bar {
+  background-color: var(--primary-navy);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.82rem;
+  font-family: var(--font-heading);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
+  z-index: 1001;
 }
 
-.card-dark:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-3px);
-}
-
-/* 2. ปุ่มหลักโทนน้ำเงินเทค (Primary Tech Button) */
-.btn-primary {
-  display: inline-flex;
+.top-bar .container {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  background: var(--primary-blue);
-  color: #ffffff !important;
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding: 11px 24px;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
-  transition: all 0.25s ease;
+  height: 38px;
 }
 
-.btn-primary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.45);
-}
-
-/* 3. ปุ่มรองโทนดาร์ก (Secondary Dark Button) */
-.btn-secondary {
-  display: inline-flex;
+.top-audience-links {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-title) !important;
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 11px 22px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  cursor: pointer;
-  transition: all 0.25s ease;
+  gap: 16px;
+  list-style: none;
 }
 
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff !important;
-  transform: translateY(-2px);
+.top-audience-links span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.78rem;
 }
 
-/* 4. ป้ายแท็กโทนดาร์กมินิมอล (Minimal Badge) */
-.badge-tag {
+.top-audience-links a {
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s ease;
+}
+
+.top-audience-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.top-tools {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lang-switch {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--bg-badge);
-  color: #60a5fa;
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  padding: 5px 14px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 2px 10px;
   border-radius: var(--radius-pill);
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.lang-switch a.active {
+  color: #fff;
+  font-weight: 700;
+}
+
+.lang-switch a:not(.active) {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.lang-switch a:hover {
+  color: #fff;
+}
+
+/* ==========================================================================
+   MAIN NAVBAR (ป้องกันข้อความตัดบรรทัด / จัดวางให้พอดีสวยงาม)
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  height: 68px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-heading);
+  text-decoration: none;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
-/* 5. ข้อความไล่เฉดสีฟ้าสุขุม (Subtle Gradient Text) */
-.text-gradient {
-  background: linear-gradient(135deg, #60a5fa 0%, #a5b4fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.nav-logo-img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
 }
 
-/* 6. ส่วนหัวแต่ละ Section (Section Header) */
+.nav-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-brand-title {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.nav-brand-sub {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.nav-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.nav-link {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-body);
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-sm);
+  position: relative;
+  white-space: nowrap;
+  display: inline-block;
+  transition: color 0.25s ease, background-color 0.25s ease;
+  z-index: 1;
+}
+
+.nav-link:hover {
+  color: var(--primary-navy);
+}
+
+.nav-link.active {
+  color: var(--primary-navy);
+  font-weight: 600;
+}
+
+/* Sliding active indicator bar */
+.nav-indicator {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  height: 3px;
+  background: var(--accent-gradient);
+  border-radius: 3px;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.25s ease;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(234, 179, 8, 0.45);
+  opacity: 0;
+  transform: translateX(0);
+
+}
+
+.nav-cta {
+  background: var(--accent-gradient);
+  color: #0f2b5c !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(202, 138, 4, 0.3);
+  transition: all 0.25s ease;
+}
+
+.nav-cta:hover {
+  background: linear-gradient(135deg, #fde047 0%, #ca8a04 100%);
+  color: #0a1c3d !important;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(202, 138, 4, 0.4);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  color: var(--primary-navy);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   HERO / EDITORIAL SHOWCASE BANNER (สไตล์ chula.ac.th)
+   ========================================================================== */
+.hero {
+  padding: 80px 0 110px;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  background-color: var(--primary-navy);
+}
+
+.hero-bg {
+  position: absolute;
+  top: -15%;
+  left: 0;
+  width: 100%;
+  height: 135%;
+  background: linear-gradient(135deg, rgba(10, 25, 55, 0.88) 0%, rgba(15, 43, 92, 0.82) 60%, rgba(12, 22, 45, 0.92) 100%),
+              url('../images/hero-bg.jpg') center center / cover no-repeat;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  pointer-events: none;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* แสงละมุนนุ่มนวลสบายตา (Soft Ambient Glow) */
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.22;
+  z-index: 1;
+  will-change: transform;
+}
+
+.hero-glow-1 {
+  top: 15%;
+  left: 12%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.35) 0%, transparent 70%);
+}
+
+.hero-glow-2 {
+  bottom: 12%;
+  right: 15%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+}
+
+.hero-content {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform, opacity;
+}
+
+.hero-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 158, 11, 0.22);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  color: #fef08a;
+  padding: 7px 20px;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.hero-title .text-highlight {
+  color: #fbbf24;
+  position: relative;
+}
+
+.hero-desc {
+  font-size: 1.12rem;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 auto 2.25rem;
+  max-width: 760px;
+  line-height: 1.85;
+  font-weight: 300;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item h4 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.stat-item p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================================================
+   QUICK ACCESS OVERLAY BAR (สไตล์ chula.ac.th - 5 ช่องด่วนลอยตัว)
+   ========================================================================== */
+.quick-access-wrapper {
+  margin-top: -50px;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 40px;
+}
+
+.quick-access-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 35px rgba(15, 43, 92, 0.1);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.quick-access-card {
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  border-right: 1px solid var(--border-subtle);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.quick-access-card:last-child {
+  border-right: none;
+}
+
+.quick-access-card:hover {
+  background: var(--bg-surface-subtle);
+  transform: translateY(-3px);
+}
+
+.quick-access-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--accent-brand-light);
+  color: var(--accent-brand-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.25s ease;
+}
+
+.quick-access-card:hover .quick-access-icon {
+  background: var(--accent-gradient);
+  color: #0f2b5c;
+  transform: scale(1.08);
+}
+
+.quick-access-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--primary-navy);
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+.quick-access-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   SECTION HEADERS (สไตล์ chula.ac.th)
+   ========================================================================== */
 .section-header {
   text-align: center;
-  max-width: 760px;
+  max-width: 780px;
   margin: 0 auto 3.5rem;
 }
 
 .section-subtitle {
-  color: #60a5fa;
+  color: var(--accent-brand-dark);
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -200,133 +584,590 @@ section {
 }
 
 .section-title {
-  font-size: 2.2rem;
+  font-size: 2.25rem;
   font-weight: 700;
-  color: var(--text-title);
+  color: var(--primary-navy);
   margin-bottom: 0.75rem;
 }
 
 .section-desc {
-  color: var(--text-body);
-  font-size: 1.05rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
-/* 7. เลย์เอาต์ Bento Grid */
-.bento-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-/* 8. แท็บสลับหน้า (Interactive Tabs) */
-.tab-nav-wrapper {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 2.5rem;
-}
-
-.tab-btn-pill {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-body);
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 0.92rem;
-  padding: 9px 20px;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  background: var(--accent-gradient);
+  color: #0f2b5c !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px 26px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(202, 138, 4, 0.35);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #fde047 0%, #ca8a04 100%);
+  color: #0a1c3d !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(202, 138, 4, 0.45);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: var(--primary-navy) !important;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-surface-subtle);
+  border-color: var(--border-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.btn-navy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-navy);
+  color: #ffffff !important;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 26px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(15, 43, 92, 0.25);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-navy:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   CARDS & GRID SYSTEM
+   ========================================================================== */
+.card-dark, .card-academic {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.card-dark:hover, .card-academic:hover {
+  border-color: var(--border-light);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+}
+
+.lecturers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.75rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.lecturers-grid .card-academic {
+  flex: 0 1 calc(33.333% - 1.25rem);
+  min-width: 320px;
+  max-width: 380px;
+}
+
+/* ==========================================================================
+   TAB NAVIGATION
+   ========================================================================== */
+.tab-nav-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn-pill {
+  background: #ffffff;
+  color: var(--text-body);
+  border: 1px solid var(--border-subtle);
+  padding: 9px 20px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
 }
 
 .tab-btn-pill:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--bg-surface-subtle);
+  color: var(--accent-brand);
 }
 
 .tab-btn-pill.active {
-  background: var(--primary-blue);
+  background: var(--primary-navy);
   color: #ffffff;
-  border-color: var(--primary-blue);
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  border-color: var(--primary-navy);
+  box-shadow: 0 4px 12px rgba(15, 43, 92, 0.2);
 }
 
-/* 9. ป้ายรหัสวิชา (Code Badge) */
+/* ==========================================================================
+   BADGES & PILLS
+   ========================================================================== */
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-brand-light);
+  color: var(--accent-brand);
+  border: 1px solid var(--accent-brand-border);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  white-space: nowrap;
+}
+
+.badge-navy {
+  background: #eff6ff;
+  color: var(--primary-navy);
+  border: 1px solid #bfdbfe;
+}
+
 .code-pill {
-  font-family: monospace;
-  font-weight: 600;
-  color: #60a5fa;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  padding: 2px 8px;
+  background: var(--bg-surface-subtle);
+  color: var(--primary-navy);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 8px;
   border-radius: 4px;
+  font-family: monospace;
   font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-/* 10. Animation & UX Hooks (สำหรับ Branch 1 & 3) */
-[data-animate] {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+/* ==========================================================================
+   NEWS & MAGAZINE SECTION (สไตล์ chula.ac.th)
+   ========================================================================== */
+.news-magazine-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem;
 }
 
-[data-animate].is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.news-feature-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.scroll-top-btn {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 44px;
-  height: 44px;
-  background: var(--primary-blue);
-  color: #fff;
-  border-radius: 50%;
+.news-feature-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.news-feature-img {
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f2b5c 0%, #1e40af 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+}
+
+.news-feature-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.news-feature-card:hover .news-feature-img img {
+  transform: scale(1.04);
+}
+
+.news-feature-content {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.news-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.news-feature-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.news-feature-desc {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.news-list-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.news-side-item {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.news-side-item:hover {
+  background: var(--bg-surface-subtle);
+  border-color: var(--border-light);
+  transform: translateX(4px);
+}
+
+.news-side-thumb {
+  width: 90px;
+  height: 75px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-subtle);
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.news-side-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--primary-navy);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   TABLES
+   ========================================================================== */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: #ffffff;
+}
+
+.custom-table th, .custom-table td {
+  padding: 12px 16px;
+  border: 1px solid var(--border-subtle);
+  text-align: left;
+}
+
+.custom-table th {
+  background: var(--bg-surface-subtle);
+  color: var(--primary-navy);
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.custom-table tr:hover {
+  background: #f8fafc;
+}
+
+/* ==========================================================================
+   MODAL BACKDROP
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 999;
+  transition: all 0.25s ease;
 }
 
-.scroll-top-btn.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.toast-box {
-  position: fixed;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%) translateY(50px);
-  background: #1e293b;
-  color: #f8fafc;
+.modal-box {
+  background: #ffffff;
   border: 1px solid var(--border-subtle);
-  padding: 10px 20px;
-  border-radius: var(--radius-pill);
-  font-size: 0.9rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  z-index: 2000;
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  border-radius: var(--radius-lg);
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
 }
 
-.toast-box.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+/* ==========================================================================
+   ACCREDITATION & ACHIEVEMENTS SECTION (รายงานความสำเร็จและคุณภาพหลักสูตร)
+   ========================================================================== */
+.report-header-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.75rem;
+}
+
+.report-card {
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(15, 43, 92, 0.18);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.report-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 43, 92, 0.3);
+}
+
+.report-card-navy {
+  background: linear-gradient(135deg, #0d2346 0%, #173d7a 100%);
+}
+
+.report-card-ocean {
+  background: linear-gradient(135deg, #084c75 0%, #0b69a3 100%);
+}
+
+.report-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.84rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  margin-bottom: 1.25rem;
+  width: fit-content;
+  backdrop-filter: blur(6px);
+}
+
+.report-title {
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  font-family: var(--font-heading);
+}
+
+.report-sub {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  font-weight: 300;
+}
+
+.report-meta {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1rem;
+}
+
+.report-actions {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   ACADEMIC FOOTER (สไตล์ chula.ac.th)
+   ========================================================================== */
+.academic-footer {
+  background: var(--primary-navy);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 70px 0 0;
+  border-top: 4px solid var(--accent-brand);
+}
+
+.academic-footer a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.academic-footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  background: #081a38;
+  padding: 24px 0;
+  margin-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .nav-link {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.5rem;
+  }
+  .nav-brand-title {
+    font-size: 1rem;
+  }
+  .nav-brand-sub {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 1060px) {
+  .nav-indicator {
+    display: none;
+  }
+  .nav-menu {
+    position: fixed;
+    top: 76px;
+    left: -100%;
+    width: 280px;
+    height: calc(100vh - 76px);
+    background: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.15);
+    transition: left 0.3s ease;
+    border-right: 1px solid var(--border-subtle);
+    gap: 8px;
+    z-index: 1000;
+  }
+  .nav-menu.show { left: 0; }
+  .nav-toggle { display: block; }
+  .nav-link {
+    width: 100%;
+    padding: 0.6rem 0.85rem;
+  }
+  .nav-link.active {
+    background: var(--accent-brand-light);
+    color: var(--primary-navy);
+    border-left: 3px solid var(--accent-brand);
+    border-radius: var(--radius-sm);
+  }
+  .quick-access-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .news-magazine-grid {
+    grid-template-columns: 1fr;
+  }
+  .lecturers-grid .card-academic {
+    flex: 0 1 calc(50% - 1rem);
+    min-width: 280px;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 992px) {
+  .top-bar { display: none; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 450px; }
+}
+
+@media (max-width: 640px) {
+  .quick-access-grid {
+    grid-template-columns: 1fr;
+  }
+  .quick-access-card {
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .lecturers-grid .card-academic {
+    flex: 1 1 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-desc {
+    font-size: 1rem;
+  }
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
 }

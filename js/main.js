@@ -1,7 +1,7 @@
 /**
  * MAIN JAVASCRIPT LOGIC
  * สาขาวิชาวิทยาการคอมพิวเตอร์ มรภ.ศรีสะเกษ (CS SSKRU)
- * Theme: Sleek & Modern Dark Tech
+ * Theme: Prestigious University Academic Style (Inspired by chula.ac.th)
  */
 
 // 1. ข้อมูลคณาจารย์ประจำหลักสูตร (Faculty Data)
@@ -155,35 +155,39 @@ const lecturersData = [
   }
 ];
 
-// 2. Render Faculty Cards
+// 2. Render Faculty Cards (Academic Style)
 document.addEventListener('DOMContentLoaded', () => {
   const lecturersGrid = document.getElementById('lecturersGrid');
   if (lecturersGrid) {
+    lecturersGrid.innerHTML = '';
     lecturersData.forEach(lec => {
       const card = document.createElement('div');
-      card.className = 'card-dark';
+      card.className = 'card-academic';
       card.style.textAlign = 'center';
       card.style.display = 'flex';
       card.style.flexDirection = 'column';
       card.style.alignItems = 'center';
       card.innerHTML = `
         <div style="position:relative;margin-bottom:1.25rem;">
-          <img src="${lec.image}" alt="${lec.name}" style="width:105px;height:105px;border-radius:50%;object-fit:cover;border:2px solid var(--border-subtle);" onerror="this.src='images/logo.png'">
-          <div style="position:absolute;bottom:0;right:0;width:30px;height:30px;background:var(--primary-blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;">
+          <img src="${lec.image}" alt="${lec.name}" style="width:115px;height:115px;border-radius:50%;object-fit:cover;border:3px solid #ffffff;box-shadow:0 4px 15px rgba(15,43,92,0.12);" onerror="this.src='images/logo.png'">
+          <div style="position:absolute;bottom:2px;right:2px;width:32px;height:32px;background:var(--accent-gradient);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.9rem;box-shadow:0 2px 6px rgba(0,0,0,0.2);">
             <i class="bi bi-mortarboard-fill"></i>
           </div>
         </div>
-        <h4 style="font-size:1.1rem;font-weight:600;margin-bottom:2px;color:var(--text-title);">${lec.prefix} ${lec.name}</h4>
-        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;font-family:var(--font-heading);">${lec.name_en}</div>
-        <span class="badge-tag" style="font-size:0.75rem;padding:3px 10px;margin-bottom:0.75rem;">${lec.role}</span>
-        <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1.25rem;flex-grow:1;line-height:1.5;">${lec.expertise}</p>
-        <button class="btn-secondary" style="width:100%;justify-content:center;font-size:0.88rem;padding:8px 14px;" onclick="openModal(${lec.id})">
-          <i class="bi bi-person-lines-fill"></i> ดูประวัติและผลงาน
+        <h4 style="font-size:1.15rem;font-weight:700;margin-bottom:3px;color:var(--primary-navy);">${lec.prefix} ${lec.name}</h4>
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.6rem;font-family:var(--font-heading);font-weight:500;">${lec.name_en}</div>
+        <span class="badge-tag" style="font-size:0.75rem;padding:3px 12px;margin-bottom:0.85rem;">${lec.role}</span>
+        <p style="font-size:0.9rem;color:var(--text-body);margin-bottom:1.5rem;flex-grow:1;line-height:1.6;">${lec.expertise}</p>
+        <button class="btn-secondary" style="width:100%;justify-content:center;font-size:0.88rem;padding:10px 14px;" onclick="openModal(${lec.id})">
+          <i class="bi bi-person-lines-fill" style="color:var(--accent-brand);"></i> ดูประวัติและผลงาน
         </button>
       `;
       lecturersGrid.appendChild(card);
     });
   }
+
+  // Initialize Navigation ScrollSpy & Sliding Active Indicator
+  initNavScrollSpy();
 });
 
 // 3. Tab Switching Handlers
@@ -211,6 +215,14 @@ function switchYear(planId, btn) {
   btn.classList.add('active');
 }
 
+function switchNewsTab(tabId, btn) {
+  document.querySelectorAll('.news-tab-content').forEach(c => c.style.display = 'none');
+  document.querySelectorAll('#news .tab-btn-pill').forEach(b => b.classList.remove('active'));
+  const target = document.getElementById(tabId);
+  if (target) target.style.display = 'block';
+  btn.classList.add('active');
+}
+
 // 4. Modal Handlers
 function openModal(id) {
   const lec = lecturersData.find(l => l.id === id);
@@ -225,7 +237,7 @@ function openModal(id) {
   const eduContainer = document.getElementById('modalEducation');
   eduContainer.innerHTML = lec.education.map(e => `
     <div style="position:relative;margin-bottom:1rem;padding-left:8px;">
-      <strong style="color:var(--text-title);font-size:0.95rem;">${e.degree} (${e.field})</strong><br>
+      <strong style="color:var(--primary-navy);font-size:0.95rem;">${e.degree} (${e.field})</strong><br>
       <span style="font-size:0.85rem;color:var(--text-muted);">${e.institution} ${e.country ? '('+e.country+')' : ''} (พ.ศ. ${e.year})</span>
     </div>
   `).join('');
@@ -233,18 +245,18 @@ function openModal(id) {
   // Primary Courses
   const coursesContainer = document.getElementById('modalCourses');
   coursesContainer.innerHTML = lec.courses_taught.map(c => `
-    <span style="background:rgba(255,255,255,0.04);border:1px solid var(--border-subtle);padding:5px 10px;border-radius:6px;font-size:0.85rem;display:inline-flex;align-items:center;gap:6px;">
-      <strong class="code-pill">${c.code}</strong> <span style="color:var(--text-title);">${c.name}</span> <small style="color:var(--text-muted);">(${c.credits})</small>
+    <span style="background:var(--bg-surface-subtle);border:1px solid var(--border-subtle);padding:6px 12px;border-radius:6px;font-size:0.85rem;display:inline-flex;align-items:center;gap:8px;">
+      <strong class="code-pill">${c.code}</strong> <span style="color:var(--primary-navy);font-weight:500;">${c.name}</span> <small style="color:var(--text-muted);">(${c.credits})</small>
     </span>
   `).join('');
 
   // Publications
   const pubContainer = document.getElementById('modalPubs');
   pubContainer.innerHTML = lec.publications.map(p => `
-    <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-subtle);border-radius:10px;padding:1.25rem;margin-bottom:0.75rem;">
-      <h5 style="font-size:0.95rem;margin-bottom:4px;color:var(--text-title);line-height:1.4;">${p.title}</h5>
-      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:6px;">ผู้เขียน: ${p.authors.join(', ')} | ปี พ.ศ. ${p.year}</p>
-      <span style="background:rgba(59,130,246,0.1);color:#60a5fa;font-size:0.75rem;padding:2px 8px;border-radius:4px;display:inline-block;">
+    <div style="background:var(--bg-surface-subtle);border:1px solid var(--border-subtle);border-radius:10px;padding:1.25rem;margin-bottom:0.85rem;">
+      <h5 style="font-size:0.98rem;font-weight:600;margin-bottom:6px;color:var(--primary-navy);line-height:1.4;">${p.title}</h5>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:8px;">ผู้เขียน: ${p.authors.join(', ')} | ปี พ.ศ. ${p.year}</p>
+      <span style="background:var(--accent-brand-light);color:var(--accent-brand);font-size:0.75rem;padding:3px 10px;border-radius:4px;display:inline-block;font-weight:600;border:1px solid var(--accent-brand-border);">
         ${p.journal} ปีที่ ${p.volume} ฉบับที่ ${p.issue} หน้า ${p.pages}
       </span>
     </div>
@@ -267,19 +279,207 @@ function closeModalDirect() {
   modal.style.visibility = 'hidden';
 }
 
-// 5. Mobile Navigation
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
-if (navToggle && navMenu) {
-  navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
+// 5. Navigation ScrollSpy & Sliding Active Indicator
+function initNavScrollSpy() {
+  const navbar = document.getElementById('navbar');
+  const navMenu = document.getElementById('navMenu');
+  const navIndicator = document.getElementById('navIndicator');
+  const navLinks = Array.from(document.querySelectorAll('.nav-menu .nav-link'));
+  const navToggle = document.getElementById('navToggle');
+
+  // Map section IDs to their corresponding nav link
+  const sectionMapping = {
+    'hero': 'hero',
+    'about': 'about',
+    'why-cs': 'about',
+    'curriculum': 'curriculum',
+    'schedule': 'schedule',
+    'achievements': 'schedule',
+    'news': 'news',
+    'lecturers': 'lecturers',
+    'downloads': 'downloads',
+    'contact': 'contact'
+  };
+
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+
+  // Move indicator to a specific nav-link element
+  function moveIndicator(linkEl) {
+    if (!navIndicator || !navMenu || !linkEl) return;
+    
+    // In mobile view (hidden indicator), do nothing
+    if (window.innerWidth <= 1060) {
+      navIndicator.style.opacity = '0';
+      return;
+    }
+
+    const menuRect = navMenu.getBoundingClientRect();
+    const linkRect = linkEl.getBoundingClientRect();
+
+    // Position indicator neatly underneath the link text
+    const paddingX = 8;
+    const left = (linkRect.left - menuRect.left) + paddingX;
+    const width = linkRect.width - (paddingX * 2);
+
+    if (width > 0) {
+      navIndicator.style.transform = `translateX(${left}px)`;
+      navIndicator.style.width = `${width}px`;
+      navIndicator.style.opacity = '1';
+    }
+  }
+
+  // Set active link class
+  function setActiveLink(targetId) {
+    const mappedId = sectionMapping[targetId] || targetId;
+    let foundActive = false;
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === `#${mappedId}`) {
+        link.classList.add('active');
+        foundActive = true;
+        moveIndicator(link);
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    return foundActive;
+  }
+
+  // ScrollSpy function based on viewport position
+  let isTicking = false;
+  function handleScrollSpy() {
+    const scrollPos = window.scrollY || window.pageYOffset;
+    const navbarHeight = navbar ? navbar.offsetHeight : 76;
+    const triggerOffset = navbarHeight + 90;
+
+    // Check if scrolled near bottom of page -> highlight contact
+    if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 60) {
+      setActiveLink('contact');
+      return;
+    }
+
+    // Find current active section
+    let currentSectionId = 'hero';
+    for (let i = 0; i < sections.length; i++) {
+      const section = sections[i];
+      const sectionTop = section.offsetTop - triggerOffset;
+
+      if (scrollPos >= sectionTop) {
+        currentSectionId = section.getAttribute('id');
+      }
+    }
+
+    setActiveLink(currentSectionId);
+  }
+
+  // Hero elements for gentle parallax
+  const hero = document.getElementById('hero');
+  const heroBg = document.getElementById('heroBg');
+  const heroContent = document.getElementById('heroContent');
+  const heroGlow1 = document.getElementById('heroGlow1');
+  const heroGlow2 = document.getElementById('heroGlow2');
+
+  function handleHeroParallax(scrollPos) {
+    if (!hero || !heroBg) return;
+    const heroHeight = hero.offsetHeight;
+
+    // Run only while Hero is in or near the viewport
+    if (scrollPos <= heroHeight + 100) {
+      // Gentle & smooth parallax (สบายตา ไม่เวียนหัว)
+      const bgY = scrollPos * 0.22;
+      const contentY = scrollPos * 0.10;
+      const opacity = Math.max(0, 1 - (scrollPos / (heroHeight * 1.25)));
+
+      heroBg.style.transform = `translate3d(0, ${bgY}px, 0)`;
+      if (heroContent) {
+        heroContent.style.transform = `translate3d(0, ${contentY}px, 0)`;
+        heroContent.style.opacity = opacity;
+      }
+      if (heroGlow1) {
+        heroGlow1.style.transform = `translate3d(0, ${scrollPos * 0.15}px, 0)`;
+      }
+      if (heroGlow2) {
+        heroGlow2.style.transform = `translate3d(0, ${scrollPos * 0.12}px, 0)`;
+      }
+    }
+  }
+
+  // Unified Scroll event with requestAnimationFrame for 60fps smoothness
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY || window.pageYOffset;
+
+    // Sticky navbar elevation
+    if (scrollPos > 40) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        handleScrollSpy();
+        handleHeroParallax(scrollPos);
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, { passive: true });
+
+  // Hover and Click animations on nav menu items
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      moveIndicator(link);
+    });
+
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        navMenu.classList.remove('show');
+        const targetId = href.substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const targetOffset = targetEl.offsetTop - (navbar ? navbar.offsetHeight : 76);
+          window.scrollTo({
+            top: targetOffset,
+            behavior: 'smooth'
+          });
+          setActiveLink(targetId);
+        }
+      }
+    });
   });
 
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('show');
-      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
+  // When mouse leaves menu, snap back to active item
+  navMenu.addEventListener('mouseleave', () => {
+    const activeLink = navMenu.querySelector('.nav-link.active');
+    if (activeLink) {
+      moveIndicator(activeLink);
+    }
+  });
+
+  // Window resize handler
+  window.addEventListener('resize', () => {
+    const activeLink = navMenu.querySelector('.nav-link.active');
+    if (activeLink) {
+      moveIndicator(activeLink);
+    }
+  });
+
+  // Mobile drawer toggle
+  if (navToggle) {
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
     });
+  }
+
+  // Initial update
+  handleScrollSpy();
+  handleHeroParallax(window.scrollY || window.pageYOffset);
+  window.addEventListener('load', () => {
+    handleScrollSpy();
+    handleHeroParallax(window.scrollY || window.pageYOffset);
   });
 }
