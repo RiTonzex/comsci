@@ -21,7 +21,13 @@ const translations = {
     nav_news: 'ข่าวสาร <i class="bi bi-chevron-down nav-arrow"></i>',
     nav_sub_news: '<i class="bi bi-newspaper"></i> สาระความรู้และข่าวสาร',
     nav_sub_quality: '<i class="bi bi-award-fill"></i> รายงานความสำเร็จ & คุณภาพ',
-    nav_faculty: 'คณาจารย์',
+    nav_faculty: 'คณาจารย์ <i class="bi bi-chevron-down nav-arrow"></i>',
+    nav_sub_fac_all: '<i class="bi bi-people-fill"></i> คณาจารย์ทั้งหมด',
+    nav_sub_fac_5: '<i class="bi bi-person-badge-fill"></i> ผศ.ดร.กนิษฐา อินธิชิต',
+    nav_sub_fac_1: '<i class="bi bi-person-badge-fill"></i> ผศ.ดร.เจษฎา โพนแก้ว',
+    nav_sub_fac_2: '<i class="bi bi-person-badge-fill"></i> ดร.เจษฎา ชาตรี',
+    nav_sub_fac_3: '<i class="bi bi-person-badge-fill"></i> ดร.กริชบดินทร์ ผิวหอม',
+    nav_sub_fac_4: '<i class="bi bi-person-badge-fill"></i> ผศ.พิศาล สุขขี',
     nav_downloads: 'ดาวน์โหลด',
     nav_contact: 'ติดต่อเรา',
     nav_cta: '<i class="bi bi-mortarboard-fill"></i> สมัครเรียน TCAS',
@@ -304,7 +310,13 @@ const translations = {
     nav_news: 'News & Reports <i class="bi bi-chevron-down nav-arrow"></i>',
     nav_sub_news: '<i class="bi bi-newspaper"></i> News & Articles',
     nav_sub_quality: '<i class="bi bi-award-fill"></i> Quality & Achievements',
-    nav_faculty: 'Faculty',
+    nav_faculty: 'Faculty <i class="bi bi-chevron-down nav-arrow"></i>',
+    nav_sub_fac_all: '<i class="bi bi-people-fill"></i> All Faculty Members',
+    nav_sub_fac_5: '<i class="bi bi-person-badge-fill"></i> Asst. Prof. Dr. Kanittha Inthichit',
+    nav_sub_fac_1: '<i class="bi bi-person-badge-fill"></i> Asst. Prof. Dr. Jessada Phonkaew',
+    nav_sub_fac_2: '<i class="bi bi-person-badge-fill"></i> Dr. Jessada Chatree',
+    nav_sub_fac_3: '<i class="bi bi-person-badge-fill"></i> Dr. Krichbodin Phewhom',
+    nav_sub_fac_4: '<i class="bi bi-person-badge-fill"></i> Asst. Prof. Phisan Sukkee',
     nav_downloads: 'Downloads',
     nav_contact: 'Contact',
     nav_cta: '<i class="bi bi-mortarboard-fill"></i> TCAS Apply',
@@ -940,9 +952,23 @@ function closeModalDirect() {
   modal.style.visibility = 'hidden';
 }
 
+function openLecturerModalFromNav(id) {
+  const targetEl = document.getElementById('lecturers');
+  if (targetEl) {
+    const navbar = document.getElementById('navbar');
+    const targetOffset = targetEl.offsetTop - (navbar ? navbar.offsetHeight : 76);
+    window.scrollTo({
+      top: targetOffset,
+      behavior: 'smooth'
+    });
+  }
+  openModal(id);
+}
+
 window.openModal = openModal;
 window.closeModal = closeModal;
 window.closeModalDirect = closeModalDirect;
+window.openLecturerModalFromNav = openLecturerModalFromNav;
 
 // ============================================================================
 // 6. TAB SWITCHING HANDLERS

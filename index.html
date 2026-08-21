@@ -89,7 +89,32 @@
           </div>
         </li>
 
-        <li><a href="#lecturers" class="nav-link" data-i18n="nav_faculty">คณาจารย์</a></li>
+        <!-- Dropdown: คณาจารย์ (Faculty & Profiles) -->
+        <li class="nav-item-dropdown">
+          <a href="#lecturers" class="nav-link dropdown-toggle" data-i18n-html="nav_faculty">
+            คณาจารย์ <i class="bi bi-chevron-down nav-arrow"></i>
+          </a>
+          <div class="nav-dropdown-menu" style="min-width: 275px;">
+            <a href="#lecturers" class="dropdown-item" data-i18n-html="nav_sub_fac_all">
+              <i class="bi bi-people-fill"></i> คณาจารย์ทั้งหมด
+            </a>
+            <a href="#lecturers" class="dropdown-item" onclick="openLecturerModalFromNav(5)" data-i18n-html="nav_sub_fac_5">
+              <i class="bi bi-person-badge-fill"></i> ผศ.ดร.กนิษฐา อินธิชิต
+            </a>
+            <a href="#lecturers" class="dropdown-item" onclick="openLecturerModalFromNav(1)" data-i18n-html="nav_sub_fac_1">
+              <i class="bi bi-person-badge-fill"></i> ผศ.ดร.เจษฎา โพนแก้ว
+            </a>
+            <a href="#lecturers" class="dropdown-item" onclick="openLecturerModalFromNav(2)" data-i18n-html="nav_sub_fac_2">
+              <i class="bi bi-person-badge-fill"></i> ดร.เจษฎา ชาตรี
+            </a>
+            <a href="#lecturers" class="dropdown-item" onclick="openLecturerModalFromNav(3)" data-i18n-html="nav_sub_fac_3">
+              <i class="bi bi-person-badge-fill"></i> ดร.กริชบดินทร์ ผิวหอม
+            </a>
+            <a href="#lecturers" class="dropdown-item" onclick="openLecturerModalFromNav(4)" data-i18n-html="nav_sub_fac_4">
+              <i class="bi bi-person-badge-fill"></i> ผศ.พิศาล สุขขี
+            </a>
+          </div>
+        </li>
         <li><a href="#downloads" class="nav-link" data-i18n="nav_downloads">ดาวน์โหลด</a></li>
         <li><a href="#contact" class="nav-link" data-i18n="nav_contact">ติดต่อเรา</a></li>
         <div class="nav-indicator" id="navIndicator"></div>
