@@ -819,6 +819,21 @@ section {
   max-width: 380px;
 }
 
+.curriculum-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .curriculum-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+}
+
 /* ==========================================================================
    TAB NAVIGATION
    ========================================================================== */
