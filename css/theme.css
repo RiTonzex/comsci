@@ -1107,3 +1107,65 @@ section {
     gap: 15px;
   }
 }
+
+/* ==========================================================================
+   ACADEMIC QUALITY & ACHIEVEMENTS SECTION (ธีมน้ำเงินหรูหราสง่างาม CS SSKRU)
+   ========================================================================== */
+#quality-reports {
+  background: linear-gradient(135deg, #07152b 0%, #0f2b5c 50%, #153a75 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  padding: 85px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#quality-reports::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.22) 0%, transparent 45%),
+              radial-gradient(circle at 85% 80%, rgba(234, 179, 8, 0.12) 0%, transparent 45%),
+              url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+#quality-reports .container {
+  position: relative;
+  z-index: 2;
+}
+
+#quality-reports .section-subtitle {
+  color: #fde047;
+  background: rgba(250, 204, 21, 0.15);
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  padding: 6px 18px;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(8px);
+}
+
+#quality-reports .section-title {
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+#quality-reports .section-desc {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+#quality-reports .card-academic {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+#quality-reports .card-academic:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
