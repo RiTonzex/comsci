@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- Prestigious Academic Theme (Inspired by chula.ac.th) -->
-  <link rel="stylesheet" href="css/theme.css?v=2.3.0">
+  <link rel="stylesheet" href="css/theme.css?v=2.2.0">
 </head>
 <body>
 
@@ -39,7 +39,7 @@
   </div>
 
   <!-- =========================================================================
-       2. MAIN NAVBAR & HEADER (Cleaned Navigation Menu)
+       2. MAIN NAVBAR & HEADER (With Right Corner Language Toggle)
        ========================================================================= -->
   <nav class="navbar" id="navbar">
     <div class="container">
@@ -58,8 +58,9 @@
       <ul class="nav-menu" id="navMenu">
         <li><a href="#hero" class="nav-link active" data-i18n="nav_home">หน้าแรก</a></li>
         <li><a href="#about" class="nav-link" data-i18n="nav_about">เกี่ยวกับเรา</a></li>
-        <li><a href="#curriculum" class="nav-link" data-i18n="nav_curriculum">หลักสูตร & แผนการเรียน</a></li>
-        <li><a href="#news" class="nav-link" data-i18n="nav_news">ข่าวสาร & ผลงาน</a></li>
+        <li><a href="#curriculum" class="nav-link" data-i18n="nav_curriculum">หลักสูตร</a></li>
+        <li><a href="#schedule" class="nav-link" data-i18n="nav_schedule">แผนการเรียน</a></li>
+        <li><a href="#news" class="nav-link" data-i18n="nav_news">ข่าวสาร</a></li>
         <li><a href="#lecturers" class="nav-link" data-i18n="nav_faculty">คณาจารย์</a></li>
         <li><a href="#downloads" class="nav-link" data-i18n="nav_downloads">ดาวน์โหลด</a></li>
         <li><a href="#contact" class="nav-link" data-i18n="nav_contact">ติดต่อเรา</a></li>
@@ -151,7 +152,7 @@
         <div class="quick-access-desc" data-i18n="qa_curr_desc">โครงสร้าง 3 กลุ่มความเชี่ยวชาญ</div>
       </a>
 
-      <a href="#curriculum" onclick="showCurriculumPlanTab()" class="quick-access-card">
+      <a href="#schedule" class="quick-access-card">
         <div class="quick-access-icon"><i class="bi bi-calendar-week"></i></div>
         <div class="quick-access-title" data-i18n="qa_plan_title">แผนการเรียน 4 ปี</div>
         <div class="quick-access-desc" data-i18n="qa_plan_desc">รายวิชาและตารางเรียนทุกชั้นปี</div>
@@ -349,278 +350,128 @@
   </section>
 
   <!-- =========================================================================
-       7. CURRICULUM & STUDY PLAN SECTION (รวมหลักสูตร & แผนการเรียน 4 ปี)
+       7. CURRICULUM TRACKS (กลุ่มวิชาความเชี่ยวชาญ)
        ========================================================================= -->
   <section id="curriculum" style="background-color: var(--bg-main);">
     <div class="container">
       <div class="section-header">
-        <div class="section-subtitle" data-i18n-html="curr_subtitle"><i class="bi bi-journal-bookmark-fill"></i> ACADEMIC CURRICULUM</div>
-        <h2 class="section-title" data-i18n="curr_title">โครงสร้างหลักสูตรและแผนการเรียน</h2>
-        <p class="section-desc" data-i18n="curr_desc">ครอบคลุม 3 กลุ่มวิชาความเชี่ยวชาญ และแผนการเรียนตลอด 4 ปี (หน่วยกิตรวม 133 หน่วยกิต)</p>
+        <div class="section-subtitle" data-i18n-html="curr_subtitle"><i class="bi bi-stack"></i> SPECIALIZATION TRACKS</div>
+        <h2 class="section-title" data-i18n="curr_title">โครงสร้างกลุ่มวิชาความเชี่ยวชาญ</h2>
+        <p class="section-desc" data-i18n="curr_desc">ออกแบบหลักสูตรให้ครอบคลุม 3 ด้านหลักที่ตลาดแรงงานไอทีระดับสากลต้องการสูงสุด</p>
       </div>
 
-      <!-- Main Curriculum Section Switcher -->
-      <div class="tab-nav-wrapper curr-main-tab-nav" style="margin-bottom:2rem;">
-        <button class="tab-btn-pill active" onclick="switchCurriculumMainTab('curr-section-tracks', this)" data-i18n-html="curr_main_tracks" style="font-size:0.95rem;padding:10px 22px;">
-          <i class="bi bi-stack"></i> กลุ่มวิชาความเชี่ยวชาญ (Specialization Tracks)
+      <div class="tab-nav-wrapper">
+        <button class="tab-btn-pill active" onclick="switchTrack('track-core', this)" data-i18n-html="track_btn_core">
+          <i class="bi bi-pc-display-horizontal"></i> วิทยาการคอมพิวเตอร์หลัก (Core CS)
         </button>
-        <button class="tab-btn-pill" id="currPlanTabBtn" onclick="switchCurriculumMainTab('curr-section-plan', this)" data-i18n-html="curr_main_plan" style="font-size:0.95rem;padding:10px 22px;">
-          <i class="bi bi-calendar4-week"></i> แผนการศึกษา 4 ปี (8 ภาคเรียน)
+        <button class="tab-btn-pill" onclick="switchTrack('track-software', this)" data-i18n-html="track_btn_software">
+          <i class="bi bi-terminal-split"></i> เทคโนโลยีซอฟต์แวร์ (Software Tech)
+        </button>
+        <button class="tab-btn-pill" onclick="switchTrack('track-ai', this)" data-i18n-html="track_btn_ai">
+          <i class="bi bi-cpu"></i> ปัญญาประดิษฐ์ & ข้อมูล (AI & Data Science)
         </button>
       </div>
 
-      <!-- 7.1 Specialization Tracks Content -->
-      <div id="curr-section-tracks" class="curr-main-content" style="display:block;">
-        <div class="tab-nav-wrapper" style="margin-bottom:1.5rem;">
-          <button class="tab-btn-pill active" onclick="switchTrack('track-core', this)" data-i18n-html="track_btn_core">
-            <i class="bi bi-pc-display-horizontal"></i> วิทยาการคอมพิวเตอร์หลัก (Core CS)
-          </button>
-          <button class="tab-btn-pill" onclick="switchTrack('track-software', this)" data-i18n-html="track_btn_software">
-            <i class="bi bi-terminal-split"></i> เทคโนโลยีซอฟต์แวร์ (Software Tech)
-          </button>
-          <button class="tab-btn-pill" onclick="switchTrack('track-ai', this)" data-i18n-html="track_btn_ai">
-            <i class="bi bi-cpu"></i> ปัญญาประดิษฐ์ & ข้อมูล (AI & Data Science)
-          </button>
-        </div>
-
-        <!-- Track 1: Core CS -->
-        <div id="track-core" class="track-content" style="display:block;">
-          <div class="grid-2x2">
-            <div class="card-academic">
-              <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c1_title"><i class="bi bi-network-wired" style="color:var(--accent-pink);"></i> โครงข่ายคอมพิวเตอร์ (Networks)</h4>
-              <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c1_desc">เรียนรู้การออกแบบ ติดตั้ง และบำรุงรักษาระบบเครือข่าย ทั้งแบบสายและไร้สายเพื่อการสื่อสารในองค์กร</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
-                <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
-                <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
-              </div>
-            </div>
-
-            <div class="card-academic">
-              <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c2_title"><i class="bi bi-shield-lock" style="color:var(--accent-pink);"></i> ความปลอดภัยของข้อมูล (Security)</h4>
-              <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c2_desc">การป้องกันและควบคุมความปลอดภัยข้อมูล การเข้ารหัสลับ และการตรวจจับผู้บุกรุกในระบบสารสนเทศ</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
-                <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lecture">วิชาบรรยาย</span>
-                <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
-              </div>
-            </div>
-
-            <div class="card-academic">
-              <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c3_title"><i class="bi bi-braces-asterisk" style="color:var(--accent-pink);"></i> นิติวิทยาศาสตร์คอมพิวเตอร์ (Forensics)</h4>
-              <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c3_desc">การตรวจสอบและวิเคราะห์ข้อมูลที่ถูกโจมตีทางไซเบอร์ การสืบค้นพยานหลักฐานดิจิทัล และกฎหมายไอที</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
-                <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
-                <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
-              </div>
-            </div>
-
-            <div class="card-academic">
-              <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c4_title"><i class="bi bi-database" style="color:var(--accent-pink);"></i> ระบบฐานข้อมูล (Database Systems)</h4>
-              <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c4_desc">การออกแบบ ติดตั้ง และบำรุงรักษาระบบฐานข้อมูล รวมถึง SQL ซึ่งเป็นภาษาคิวรีสำหรับฐานข้อมูล</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
-                <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
-                <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
-              </div>
+      <!-- Track 1: Core CS -->
+      <div id="track-core" class="track-content" style="display:block;">
+        <div class="grid-2x2">
+          <div class="card-academic">
+            <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c1_title"><i class="bi bi-network-wired" style="color:var(--accent-pink);"></i> โครงข่ายคอมพิวเตอร์ (Networks)</h4>
+            <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c1_desc">เรียนรู้การออกแบบ ติดตั้ง และบำรุงรักษาระบบเครือข่าย ทั้งแบบสายและไร้สายเพื่อการสื่อสารในองค์กร</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
+              <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
+              <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
             </div>
           </div>
-        </div>
 
-        <!-- Track 2: Software Tech -->
-        <div id="track-software" class="track-content" style="display:none;">
-          <div class="grid-2x2">
-            <div class="card-academic">
-              <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c5_title"><i class="bi bi-layers-half" style="color:var(--accent-pink);"></i> วิศวกรรมซอฟต์แวร์ (Software Eng)</h4>
-              <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c5_desc">กระบวนการสร้างซอฟต์แวร์ การวิเคราะห์และออกแบบระบบ การทดสอบและการบำรุงรักษาตามมาตรฐาน</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
-                <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lecture">วิชาบรรยาย</span>
-                <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
-              </div>
-            </div>
-
-            <div class="card-academic">
-              <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c6_title"><i class="bi bi-file-earmark-code" style="color:var(--accent-pink);"></i> เว็บแอปพลิเคชันสมัยใหม่ (Modern Web)</h4>
-              <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c6_desc">การเขียนโปรแกรมฝั่งไคลเอนต์และเซิร์ฟเวอร์ด้วยเฟรมเวิร์กยอดนิยม เช่น React, Next.js และ Node.js</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
-                <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
-                <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
-              </div>
-            </div>
-
-            <div class="card-academic">
-              <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c7_title"><i class="bi bi-image" style="color:var(--accent-pink);"></i> การประมวลผลภาพดิจิทัล (Image Processing)</h4>
-              <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c7_desc">การปรับแต่งภาพ การค้นหาวัตถุ และการสกัดคุณลักษณะจากภาพด้วยอัลกอริทึมคอมพิวเตอร์</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
-                <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
-                <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
-              </div>
-            </div>
-
-            <div class="card-academic">
-              <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c8_title"><i class="bi bi-map" style="color:var(--accent-pink);"></i> สารสนเทศภูมิศาสตร์ (GIS)</h4>
-              <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c8_desc">การประยุกต์ใช้เทคโนโลยีสารสนเทศในการวิเคราะห์ แสดงผลข้อมูล และแผนที่ภูมิศาสตร์ขั้นสูง</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
-                <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
-                <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
-              </div>
+          <div class="card-academic">
+            <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c2_title"><i class="bi bi-shield-lock" style="color:var(--accent-pink);"></i> ความปลอดภัยของข้อมูล (Security)</h4>
+            <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c2_desc">การป้องกันและควบคุมความปลอดภัยข้อมูล การเข้ารหัสลับ และการตรวจจับผู้บุกรุกในระบบสารสนเทศ</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
+              <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lecture">วิชาบรรยาย</span>
+              <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
             </div>
           </div>
-        </div>
 
-        <!-- Track 3: AI & Data Science -->
-        <div id="track-ai" class="track-content" style="display:none;">
-          <div class="grid-2x2">
-            <div class="card-academic">
-              <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c9_title"><i class="bi bi-robot" style="color:var(--accent-pink);"></i> ปัญญาประดิษฐ์ (Artificial Intelligence)</h4>
-              <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c9_desc">การพัฒนาเทคโนโลยีจำลองความฉลาดของมนุษย์ เช่น การประมวลผลภาษาธรรมชาติ (NLP)</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
-                <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lecture">วิชาบรรยาย</span>
-                <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
-              </div>
+          <div class="card-academic">
+            <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c3_title"><i class="bi bi-braces-asterisk" style="color:var(--accent-pink);"></i> นิติวิทยาศาสตร์คอมพิวเตอร์ (Forensics)</h4>
+            <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c3_desc">การตรวจสอบและวิเคราะห์ข้อมูลที่ถูกโจมตีทางไซเบอร์ การสืบค้นพยานหลักฐานดิจิทัล และกฎหมายไอที</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
+              <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
+              <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
             </div>
+          </div>
 
-            <div class="card-academic">
-              <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c10_title"><i class="bi bi-terminal" style="color:var(--accent-pink);"></i> การเขียนโปรแกรมวิทยาการข้อมูล</h4>
-              <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c10_desc">ปฏิบัติการเขียนโค้ดด้วยภาษา Python และ R เพื่อการสกัด ดึงข้อมูล และทำ Data Cleansing</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
-                <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
-                <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
-              </div>
+          <div class="card-academic">
+            <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c4_title"><i class="bi bi-database" style="color:var(--accent-pink);"></i> ระบบฐานข้อมูล (Database Systems)</h4>
+            <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c4_desc">การออกแบบ ติดตั้ง และบำรุงรักษาระบบฐานข้อมูล รวมถึง SQL ซึ่งเป็นภาษาคิวรีสำหรับฐานข้อมูล</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
+              <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
+              <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 7.2 4-Year Study Plan Content -->
-      <div id="curr-section-plan" class="curr-main-content" style="display:none;">
-        <div class="tab-nav-wrapper" style="margin-bottom:1.5rem;">
-          <button class="tab-btn-pill active" onclick="switchYear('plan-y1y2', this)" data-i18n-html="plan_tab_y1y2">
-            <i class="bi bi-calendar4-week"></i> แผนการเรียน ชั้นปีที่ 1 และ ปีที่ 2
-          </button>
-          <button class="tab-btn-pill" onclick="switchYear('plan-y3y4', this)" data-i18n-html="plan_tab_y3y4">
-            <i class="bi bi-calendar4-range"></i> แผนการเรียน ชั้นปีที่ 3 และ ปีที่ 4
-          </button>
-        </div>
-
-        <!-- Year 1 & 2 -->
-        <div id="plan-y1y2" class="year-content" style="display:block;">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(480px, 1fr));gap:1.5rem;">
-            <div class="card-academic">
-              <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y1_s1"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 1 - ภาคเรียนที่ 1</h4>
-              <div style="overflow-x:auto;">
-                <table class="custom-table">
-                  <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
-                  <tbody>
-                    <tr><td><span class="code-pill">CS101</span></td><td data-i18n="c_cs101">พื้นฐานวิทยาการคอมพิวเตอร์</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS102</span></td><td data-i18n="c_cs102">การเขียนโปรแกรมเบื้องต้น (Python)</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">MA111</span></td><td data-i18n="c_ma111">คณิตศาสตร์ดิสครีต</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">GE101</span></td><td data-i18n="c_ge101">ภาษาอังกฤษเพื่อการสื่อสาร</td><td data-i18n="cat_gen">วิชาศึกษาทั่วไป</td></tr>
-                  </tbody>
-                </table>
-              </div>
+      <!-- Track 2: Software Tech -->
+      <div id="track-software" class="track-content" style="display:none;">
+        <div class="grid-2x2">
+          <div class="card-academic">
+            <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c5_title"><i class="bi bi-layers-half" style="color:var(--accent-pink);"></i> วิศวกรรมซอฟต์แวร์ (Software Eng)</h4>
+            <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c5_desc">กระบวนการสร้างซอฟต์แวร์ การวิเคราะห์และออกแบบระบบ การทดสอบและการบำรุงรักษาตามมาตรฐาน</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
+              <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lecture">วิชาบรรยาย</span>
+              <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
             </div>
+          </div>
 
-            <div class="card-academic">
-              <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y1_s2"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 1 - ภาคเรียนที่ 2</h4>
-              <div style="overflow-x:auto;">
-                <table class="custom-table">
-                  <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
-                  <tbody>
-                    <tr><td><span class="code-pill">CS103</span></td><td data-i18n="c_cs103">การเขียนโปรแกรมเชิงวัตถุ (Java)</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS104</span></td><td data-i18n="c_cs104">โครงสร้างข้อมูลและอัลกอริทึม</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">MA112</span></td><td data-i18n="c_ma112">สถิติและคณิตศาสตร์สัญกรณ์</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">GE102</span></td><td data-i18n="c_ge102">ทักษะชีวิตและความเป็นพลเมือง</td><td data-i18n="cat_gen">วิชาศึกษาทั่วไป</td></tr>
-                  </tbody>
-                </table>
-              </div>
+          <div class="card-academic">
+            <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c6_title"><i class="bi bi-file-earmark-code" style="color:var(--accent-pink);"></i> เว็บแอปพลิเคชันสมัยใหม่ (Modern Web)</h4>
+            <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c6_desc">การเขียนโปรแกรมฝั่งไคลเอนต์และเซิร์ฟเวอร์ด้วยเฟรมเวิร์กยอดนิยม เช่น React, Next.js และ Node.js</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
+              <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
+              <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
             </div>
+          </div>
 
-            <div class="card-academic">
-              <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y2_s1"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 2 - ภาคเรียนที่ 1</h4>
-              <div style="overflow-x:auto;">
-                <table class="custom-table">
-                  <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
-                  <tbody>
-                    <tr><td><span class="code-pill">CS201</span></td><td data-i18n="c_cs201">สถาปัตยกรรมคอมพิวเตอร์และระบบปฏิบัติการ</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS202</span></td><td data-i18n="c_cs202">ระบบฐานข้อมูลและการออกแบบ</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS203</span></td><td data-i18n="c_cs203">วิศวกรรมซอฟต์แวร์เบื้องต้น</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS204</span></td><td data-i18n="c_cs204">โครงข่ายคอมพิวเตอร์และการสื่อสาร</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                  </tbody>
-                </table>
-              </div>
+          <div class="card-academic">
+            <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c7_title"><i class="bi bi-image" style="color:var(--accent-pink);"></i> การประมวลผลภาพดิจิทัล (Image Processing)</h4>
+            <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c7_desc">การปรับแต่งภาพ การค้นหาวัตถุ และการสกัดคุณลักษณะจากภาพด้วยอัลกอริทึมคอมพิวเตอร์</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
+              <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
+              <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
             </div>
+          </div>
 
-            <div class="card-academic">
-              <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y2_s2"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 2 - ภาคเรียนที่ 2</h4>
-              <div style="overflow-x:auto;">
-                <table class="custom-table">
-                  <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
-                  <tbody>
-                    <tr><td><span class="code-pill">CS205</span></td><td data-i18n="c_cs205">การพัฒนาเว็บแอปพลิเคชัน</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS206</span></td><td data-i18n="c_cs206">การวิเคราะห์และออกแบบระบบเชิงวัตถุ</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS207</span></td><td data-i18n="c_cs207">ความมั่นคงปลอดภัยสารสนเทศพื้นฐาน</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS208</span></td><td data-i18n="c_cs208">คณิตศาสตร์และเครื่องมือสถิติสำหรับ AI</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                  </tbody>
-                </table>
-              </div>
+          <div class="card-academic">
+            <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c8_title"><i class="bi bi-map" style="color:var(--accent-pink);"></i> สารสนเทศภูมิศาสตร์ (GIS)</h4>
+            <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c8_desc">การประยุกต์ใช้เทคโนโลยีสารสนเทศในการวิเคราะห์ แสดงผลข้อมูล และแผนที่ภูมิศาสตร์ขั้นสูง</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
+              <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
+              <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Year 3 & 4 -->
-        <div id="plan-y3y4" class="year-content" style="display:none;">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(480px, 1fr));gap:1.5rem;">
-            <div class="card-academic">
-              <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y3_s1"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 3 - ภาคเรียนที่ 1</h4>
-              <div style="overflow-x:auto;">
-                <table class="custom-table">
-                  <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
-                  <tbody>
-                    <tr><td><span class="code-pill">CS301</span></td><td data-i18n="c_cs301">ปัญญาประดิษฐ์เชิงทฤษฎีและการประยุกต์</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS302</span></td><td data-i18n="c_cs302">วิทยาการข้อมูลและการวิเคราะห์ Big Data</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS303</span></td><td data-i18n="c_cs303">ภูมิสารสนเทศศาสตร์เบื้องต้น</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS3XX</span></td><td data-i18n="c_elec1">วิชาเลือกเฉพาะทางสาขาวิชา (1)</td><td data-i18n="cat_elec">วิชาเลือกเฉพาะสาขา</td></tr>
-                  </tbody>
-                </table>
-              </div>
+      <!-- Track 3: AI & Data Science -->
+      <div id="track-ai" class="track-content" style="display:none;">
+        <div class="grid-2x2">
+          <div class="card-academic">
+            <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c9_title"><i class="bi bi-robot" style="color:var(--accent-pink);"></i> ปัญญาประดิษฐ์ (Artificial Intelligence)</h4>
+            <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c9_desc">การพัฒนาเทคโนโลยีจำลองความฉลาดของมนุษย์ เช่น การประมวลผลภาษาธรรมชาติ (NLP)</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
+              <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lecture">วิชาบรรยาย</span>
+              <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
             </div>
+          </div>
 
-            <div class="card-academic">
-              <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y3_s2"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 3 - ภาคเรียนที่ 2</h4>
-              <div style="overflow-x:auto;">
-                <table class="custom-table">
-                  <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
-                  <tbody>
-                    <tr><td><span class="code-pill">CS304</span></td><td data-i18n="c_cs304">การเตรียมพร้อมฝึกประสบการณ์วิชาชีพ</td><td data-i18n="cat_skill">วิชาฝึกทักษะ</td></tr>
-                    <tr><td><span class="code-pill">CS305</span></td><td data-i18n="c_cs305">โครงงานวิทยาการคอมพิวเตอร์ 1</td><td data-i18n="cat_proj">วิชาทำโครงการ</td></tr>
-                    <tr><td><span class="code-pill">CS3XX</span></td><td data-i18n="c_elec2">วิชาเลือกเฉพาะทางสาขาวิชา (2)</td><td data-i18n="cat_elec">วิชาเลือกเฉพาะสาขา</td></tr>
-                    <tr><td><span class="code-pill">CS3XX</span></td><td data-i18n="c_free">วิชาเลือกเสรีองค์กรไอที</td><td data-i18n="cat_free_type">วิชาเลือกเสรี</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="card-academic">
-              <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y4_s1"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 4 - ภาคเรียนที่ 1</h4>
-              <div style="overflow-x:auto;">
-                <table class="custom-table">
-                  <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
-                  <tbody>
-                    <tr><td><span class="code-pill">CS401</span></td><td data-i18n="c_cs401">สหกิจศึกษาทางวิทยาการคอมพิวเตอร์ / ฝึกงาน</td><td data-i18n="cat_coop">ปฏิบัติงานในสถานประกอบการจริง</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="card-academic">
-              <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y4_s2"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 4 - ภาคเรียนที่ 2</h4>
-              <div style="overflow-x:auto;">
-                <table class="custom-table">
-                  <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
-                  <tbody>
-                    <tr><td><span class="code-pill">CS402</span></td><td data-i18n="c_cs402">สัมมนาและเทคโนโลยีไอทีเกิดใหม่</td><td data-i18n="cat_seminar">สัมมนาวิชาชีพ</td></tr>
-                    <tr><td><span class="code-pill">CS403</span></td><td data-i18n="c_cs403">โครงงานวิทยาการคอมพิวเตอร์ 2 (จบการศึกษา)</td><td data-i18n="cat_proj">วิชาทำโครงการ</td></tr>
-                  </tbody>
-                </table>
-              </div>
+          <div class="card-academic">
+            <h4 style="font-size:1.05rem;color:var(--primary-navy);margin-bottom:6px;" data-i18n-html="curr_c10_title"><i class="bi bi-terminal" style="color:var(--accent-pink);"></i> การเขียนโปรแกรมวิทยาการข้อมูล</h4>
+            <p style="font-size:0.88rem;color:var(--text-body);margin-bottom:1rem;" data-i18n="curr_c10_desc">ปฏิบัติการเขียนโค้ดด้วยภาษา Python และ R เพื่อการสกัด ดึงข้อมูล และทำ Data Cleansing</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-subtle);padding-top:10px;">
+              <span class="badge-tag" style="font-size:0.75rem;padding:2px 8px;" data-i18n="course_lab">มีห้องแล็บ</span>
+              <strong style="color:var(--primary-navy);font-size:0.88rem;" data-i18n="course_credits">3 หน่วยกิต</strong>
             </div>
           </div>
         </div>
@@ -629,22 +480,238 @@
   </section>
 
   <!-- =========================================================================
-       8. NEWS, KNOWLEDGE & ACHIEVEMENTS SECTION (รวมข่าวสาร & รายงานความสำเร็จ)
+       8. STUDY PLAN SCHEDULE (แผนการเรียน 4 ปี)
+       ========================================================================= -->
+  <section id="schedule" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle" data-i18n-html="plan_subtitle"><i class="bi bi-calendar4-week"></i> 4-YEAR STUDY PLAN</div>
+        <h2 class="section-title" data-i18n="plan_title">แผนการศึกษาและตารางวิชาเรียน 4 ปี</h2>
+        <p class="section-desc" data-i18n="plan_desc">ตัวอย่างตารางวิชาหลักในการเรียนในแต่ละชั้นปีการศึกษา (หน่วยกิตรวมไม่น้อยกว่า 133 หน่วยกิต)</p>
+      </div>
+
+      <div class="tab-nav-wrapper">
+        <button class="tab-btn-pill active" onclick="switchYear('plan-y1y2', this)" data-i18n-html="plan_tab_y1y2">
+          <i class="bi bi-calendar4-week"></i> แผนการเรียน ชั้นปีที่ 1 และ ปีที่ 2
+        </button>
+        <button class="tab-btn-pill" onclick="switchYear('plan-y3y4', this)" data-i18n-html="plan_tab_y3y4">
+          <i class="bi bi-calendar4-range"></i> แผนการเรียน ชั้นปีที่ 3 และ ปีที่ 4
+        </button>
+      </div>
+
+      <!-- Year 1 & 2 -->
+      <div id="plan-y1y2" class="year-content" style="display:block;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(480px, 1fr));gap:1.5rem;">
+          <div class="card-academic">
+            <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y1_s1"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 1 - ภาคเรียนที่ 1</h4>
+            <div style="overflow-x:auto;">
+              <table class="custom-table">
+                <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="code-pill">CS101</span></td><td data-i18n="c_cs101">พื้นฐานวิทยาการคอมพิวเตอร์</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS102</span></td><td data-i18n="c_cs102">การเขียนโปรแกรมเบื้องต้น (Python)</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">MA111</span></td><td data-i18n="c_ma111">คณิตศาสตร์ดิสครีต</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">GE101</span></td><td data-i18n="c_ge101">ภาษาอังกฤษเพื่อการสื่อสาร</td><td data-i18n="cat_gen">วิชาศึกษาทั่วไป</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-academic">
+            <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y1_s2"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 1 - ภาคเรียนที่ 2</h4>
+            <div style="overflow-x:auto;">
+              <table class="custom-table">
+                <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="code-pill">CS103</span></td><td data-i18n="c_cs103">การเขียนโปรแกรมเชิงวัตถุ (Java)</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS104</span></td><td data-i18n="c_cs104">โครงสร้างข้อมูลและอัลกอริทึม</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">MA112</span></td><td data-i18n="c_ma112">สถิติและคณิตศาสตร์สัญกรณ์</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">GE102</span></td><td data-i18n="c_ge102">ทักษะชีวิตและความเป็นพลเมือง</td><td data-i18n="cat_gen">วิชาศึกษาทั่วไป</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-academic">
+            <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y2_s1"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 2 - ภาคเรียนที่ 1</h4>
+            <div style="overflow-x:auto;">
+              <table class="custom-table">
+                <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="code-pill">CS201</span></td><td data-i18n="c_cs201">สถาปัตยกรรมคอมพิวเตอร์และระบบปฏิบัติการ</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS202</span></td><td data-i18n="c_cs202">ระบบฐานข้อมูลและการออกแบบ</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS203</span></td><td data-i18n="c_cs203">วิศวกรรมซอฟต์แวร์เบื้องต้น</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS204</span></td><td data-i18n="c_cs204">โครงข่ายคอมพิวเตอร์และการสื่อสาร</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-academic">
+            <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y2_s2"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 2 - ภาคเรียนที่ 2</h4>
+            <div style="overflow-x:auto;">
+              <table class="custom-table">
+                <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="code-pill">CS205</span></td><td data-i18n="c_cs205">การพัฒนาเว็บแอปพลิเคชัน</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS206</span></td><td data-i18n="c_cs206">การวิเคราะห์และออกแบบระบบเชิงวัตถุ</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS207</span></td><td data-i18n="c_cs207">ความมั่นคงปลอดภัยสารสนเทศพื้นฐาน</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS208</span></td><td data-i18n="c_cs208">คณิตศาสตร์และเครื่องมือสถิติสำหรับ AI</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Year 3 & 4 -->
+      <div id="plan-y3y4" class="year-content" style="display:none;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(480px, 1fr));gap:1.5rem;">
+          <div class="card-academic">
+            <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y3_s1"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 3 - ภาคเรียนที่ 1</h4>
+            <div style="overflow-x:auto;">
+              <table class="custom-table">
+                <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="code-pill">CS301</span></td><td data-i18n="c_cs301">ปัญญาประดิษฐ์เชิงทฤษฎีและการประยุกต์</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS302</span></td><td data-i18n="c_cs302">วิทยาการข้อมูลและการวิเคราะห์ Big Data</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS303</span></td><td data-i18n="c_cs303">ภูมิสารสนเทศศาสตร์เบื้องต้น</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS3XX</span></td><td data-i18n="c_elec1">วิชาเลือกเฉพาะทางสาขาวิชา (1)</td><td data-i18n="cat_elec">วิชาเลือกเฉพาะสาขา</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-academic">
+            <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y3_s2"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 3 - ภาคเรียนที่ 2</h4>
+            <div style="overflow-x:auto;">
+              <table class="custom-table">
+                <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="code-pill">CS304</span></td><td data-i18n="c_cs304">การเตรียมพร้อมฝึกประสบการณ์วิชาชีพ</td><td data-i18n="cat_skill">วิชาฝึกทักษะ</td></tr>
+                  <tr><td><span class="code-pill">CS305</span></td><td data-i18n="c_cs305">โครงงานวิทยาการคอมพิวเตอร์ 1</td><td data-i18n="cat_proj">วิชาทำโครงการ</td></tr>
+                  <tr><td><span class="code-pill">CS3XX</span></td><td data-i18n="c_elec2">วิชาเลือกเฉพาะทางสาขาวิชา (2)</td><td data-i18n="cat_elec">วิชาเลือกเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS3XX</span></td><td data-i18n="c_free">วิชาเลือกเสรีองค์กรไอที</td><td data-i18n="cat_free_type">วิชาเลือกเสรี</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-academic">
+            <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y4_s1"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 4 - ภาคเรียนที่ 1</h4>
+            <div style="overflow-x:auto;">
+              <table class="custom-table">
+                <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="code-pill">CS401</span></td><td data-i18n="c_cs401">สหกิจศึกษาทางวิทยาการคอมพิวเตอร์ / ฝึกงาน</td><td data-i18n="cat_coop">ปฏิบัติงานในสถานประกอบการจริง</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-academic">
+            <h4 style="color:var(--primary-navy);font-size:1.1rem;margin-bottom:1rem;" data-i18n-html="y4_s2"><i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 4 - ภาคเรียนที่ 2</h4>
+            <div style="overflow-x:auto;">
+              <table class="custom-table">
+                <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="code-pill">CS402</span></td><td data-i18n="c_cs402">สัมมนาและเทคโนโลยีไอทีเกิดใหม่</td><td data-i18n="cat_seminar">สัมมนาวิชาชีพ</td></tr>
+                  <tr><td><span class="code-pill">CS403</span></td><td data-i18n="c_cs403">โครงงานวิทยาการคอมพิวเตอร์ 2 (จบการศึกษา)</td><td data-i18n="cat_proj">วิชาทำโครงการ</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       ACADEMIC QUALITY & ACHIEVEMENTS SECTION (รายงานความสำเร็จและคุณภาพหลักสูตร)
+       ========================================================================= -->
+  <section id="quality-reports">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle" data-i18n-html="achieve_subtitle"><i class="bi bi-award-fill"></i> QUALITY & ACHIEVEMENTS</div>
+        <h2 class="section-title" data-i18n="achieve_title">รายงานความสำเร็จและคุณภาพหลักสูตร</h2>
+        <p class="section-desc" data-i18n="achieve_desc">เอกสารสรุปผลการประเมินคุณภาพการศึกษาระดับหลักสูตรตามมาตรฐานและการสร้างคุณค่าระดับสากล</p>
+      </div>
+
+      <div class="grid-2x2" style="max-width:1120px;margin:0 auto;gap:1.75rem;">
+        <!-- Card 1: AUN-QA Evaluation -->
+        <div class="card-academic" style="background:linear-gradient(135deg, #0f2b5c 0%, #1a3e7a 100%);color:#ffffff;border:1px solid rgba(255,255,255,0.18);padding:2.25rem;border-radius:20px;box-shadow:0 14px 35px rgba(15,43,92,0.35);display:flex;flex-direction:column;justify-content:space-between;">
+          <div>
+            <div style="margin-bottom:1.25rem;">
+              <span class="badge-tag" style="background:rgba(254,240,138,0.2);color:#fef08a;border:1px solid rgba(254,240,138,0.5);font-size:0.82rem;padding:5px 14px;" data-i18n="achieve_c1_badge">
+                🏆 การรับรองมาตรฐาน AUN-QA
+              </span>
+            </div>
+            <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:0.75rem;line-height:1.4;" data-i18n="achieve_c1_title">
+              ผลการประเมินคุณภาพสาขาวิชาฯ ปีการศึกษา 2568
+            </h3>
+            <p style="color:rgba(255,255,255,0.92);font-size:0.95rem;line-height:1.65;margin-bottom:1.25rem;" data-i18n="achieve_c1_desc">
+              ระดับคะแนนความพึงพอใจดีเยี่ยม ได้รับการประเมินคุณภาพครบทุกเกณฑ์
+            </p>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.82);margin-bottom:2rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <span data-i18n-html="achieve_c1_date"><i class="bi bi-calendar3" style="color:#93c5fd;"></i> ประเมินเมื่อ: 16 – 17 สิงหาคม 2568</span>
+              <span style="opacity:0.4;">|</span>
+              <span data-i18n-html="achieve_c1_loc"><i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> คณะศิลปศาสตร์และวิทยาศาสตร์ มรภ.ศรีสะเกษ</span>
+            </div>
+          </div>
+          <div>
+            <a href="https://drive.google.com/file/d/1VjG1c3__p96kEBRSGuFNJtZXXD9A3SjB/view?usp=sharing" target="_blank" class="btn-secondary" style="background:#ffffff;color:var(--primary-navy) !important;border:none;font-weight:700;font-size:0.9rem;padding:10px 22px;box-shadow:0 4px 14px rgba(0,0,0,0.25);" data-i18n-html="achieve_c1_btn">
+              อ่านสรุปเล่มประเมินฉบับเต็ม <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Robotics Competition -->
+        <div class="card-academic" style="background:linear-gradient(135deg, #0f2b5c 0%, #1e529d 100%);color:#ffffff;border:1px solid rgba(255,255,255,0.2);padding:2.25rem;border-radius:20px;box-shadow:0 14px 35px rgba(15,43,92,0.35);display:flex;flex-direction:column;justify-content:space-between;">
+          <div>
+            <div style="margin-bottom:1.25rem;">
+              <span class="badge-tag" style="background:rgba(186,230,253,0.2);color:#bae6fd;border:1px solid rgba(186,230,253,0.5);font-size:0.82rem;padding:5px 14px;" data-i18n="achieve_c2_badge">
+                🕶️ กิจกรรมเด่นเพื่อพัฒนาเยาวชน
+              </span>
+            </div>
+            <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:0.75rem;line-height:1.4;" data-i18n="achieve_c2_title">
+              การแข่งขันหุ่นยนต์ศรีสะเกษโรโบติกส์
+            </h3>
+            <p style="color:rgba(255,255,255,0.92);font-size:0.95rem;line-height:1.65;margin-bottom:1.25rem;" data-i18n="achieve_c2_desc">
+              จัดแข่งขันหุ่นยนต์เยาวชนชิงถ้วยเกียรติยศสูงสุด รวมทั้งสิ้น 33 รายการ สำหรับระดับการศึกษาขั้นพื้นฐาน อาชีวศึกษา และอุดมศึกษาทั่วประเทศ
+            </p>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.82);margin-bottom:2rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <span data-i18n-html="achieve_c2_date"><i class="bi bi-calendar3" style="color:#fef08a;"></i> วันที่จัดงาน: 27 – 28 มิถุนายน 2569</span>
+              <span style="opacity:0.4;">|</span>
+              <span data-i18n-html="achieve_c2_loc"><i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> มหาวิทยาลัยราชภัฏศรีสะเกษ</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="#news" class="btn-secondary" style="background:#ffffff;color:var(--primary-navy) !important;border:none;font-weight:700;font-size:0.88rem;padding:9px 18px;box-shadow:0 4px 14px rgba(0,0,0,0.25);" data-i18n-html="achieve_c2_btn1">
+              <i class="bi bi-images" style="color:#0284c7;"></i> ภาพกิจกรรม
+            </a>
+            <a href="https://www.oass.sskru.ac.th/std.sskru/s17.html" target="_blank" class="btn-secondary" style="background:rgba(255,255,255,0.18);color:#ffffff !important;border:1px solid rgba(255,255,255,0.38);font-weight:600;font-size:0.88rem;padding:9px 18px;" data-i18n-html="achieve_c2_btn2">
+              <i class="bi bi-globe"></i> เว็บไซต์กิจกรรม
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. NEWS & KNOWLEDGE SECTION (สไตล์ สาระความรู้และข่าวสาร จุฬาฯ)
        ========================================================================= -->
   <section id="news" style="background-color: #ffffff;">
     <div class="container">
       <div class="section-header">
         <div class="section-subtitle" data-i18n-html="news_subtitle"><i class="bi bi-newspaper"></i> NEWS & KNOWLEDGE</div>
-        <h2 class="section-title" data-i18n="news_title">สาระความรู้ ข่าวสาร และรายงานผลงาน</h2>
-        <p class="section-desc" data-i18n="news_desc">ติดตามความเคลื่อนไหว ผลงานนวัตกรรม การจัดอบรม รายงานความสำเร็จ และกิจกรรมสร้างสรรค์</p>
+        <h2 class="section-title" data-i18n="news_title">สาระความรู้ ข่าวสาร และกิจกรรม</h2>
+        <p class="section-desc" data-i18n="news_desc">ติดตามความเคลื่อนไหว ผลงานนวัตกรรม การจัดอบรม และกิจกรรมสร้างสรรค์ของสาขาวิชาฯ</p>
       </div>
 
       <div class="tab-nav-wrapper">
         <button class="tab-btn-pill active" onclick="switchNewsTab('news-all', this)" data-i18n-html="news_tab_all">
           <i class="bi bi-grid-fill"></i> ทั้งหมด
-        </button>
-        <button class="tab-btn-pill" onclick="switchNewsTab('news-achieve', this)" data-i18n-html="news_tab_achieve">
-          <i class="bi bi-award-fill"></i> รายงานความสำเร็จและคุณภาพ
         </button>
         <button class="tab-btn-pill" onclick="switchNewsTab('news-academic', this)" data-i18n-html="news_tab_acad">
           <i class="bi bi-cpu-fill"></i> งานวิจัยและนวัตกรรม
@@ -654,7 +721,7 @@
         </button>
       </div>
 
-      <!-- Tab Content 1: All News -->
+      <!-- Tab Content: All News -->
       <div id="news-all" class="news-tab-content" style="display:block;">
         <div class="news-magazine-grid">
           <!-- Featured Story (Left Large Card) -->
@@ -735,69 +802,7 @@
         </div>
       </div>
 
-      <!-- Tab Content 2: Achievements & Quality Reports -->
-      <div id="news-achieve" class="news-tab-content" style="display:none;">
-        <div class="grid-2x2" style="max-width:1120px;margin:0 auto;gap:1.75rem;">
-          <!-- Card 1: AUN-QA Evaluation -->
-          <div class="card-academic" style="background:linear-gradient(135deg, #0f2b5c 0%, #1a3e7a 100%);color:#ffffff;border:1px solid rgba(255,255,255,0.18);padding:2.25rem;border-radius:20px;box-shadow:0 14px 35px rgba(15,43,92,0.35);display:flex;flex-direction:column;justify-content:space-between;">
-            <div>
-              <div style="margin-bottom:1.25rem;">
-                <span class="badge-tag" style="background:rgba(254,240,138,0.2);color:#fef08a;border:1px solid rgba(254,240,138,0.5);font-size:0.82rem;padding:5px 14px;" data-i18n="achieve_c1_badge">
-                  🏆 การรับรองมาตรฐาน AUN-QA
-                </span>
-              </div>
-              <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:0.75rem;line-height:1.4;" data-i18n="achieve_c1_title">
-                ผลการประเมินคุณภาพสาขาวิชาฯ ปีการศึกษา 2568
-              </h3>
-              <p style="color:rgba(255,255,255,0.92);font-size:0.95rem;line-height:1.65;margin-bottom:1.25rem;" data-i18n="achieve_c1_desc">
-                ระดับคะแนนความพึงพอใจดีเยี่ยม ได้รับการประเมินคุณภาพครบทุกเกณฑ์
-              </p>
-              <div style="font-size:0.85rem;color:rgba(255,255,255,0.82);margin-bottom:2rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-                <span data-i18n-html="achieve_c1_date"><i class="bi bi-calendar3" style="color:#93c5fd;"></i> ประเมินเมื่อ: 16 – 17 สิงหาคม 2568</span>
-                <span style="opacity:0.4;">|</span>
-                <span data-i18n-html="achieve_c1_loc"><i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> คณะศิลปศาสตร์และวิทยาศาสตร์ มรภ.ศรีสะเกษ</span>
-              </div>
-            </div>
-            <div>
-              <a href="https://drive.google.com/file/d/1VjG1c3__p96kEBRSGuFNJtZXXD9A3SjB/view?usp=sharing" target="_blank" class="btn-secondary" style="background:#ffffff;color:var(--primary-navy) !important;border:none;font-weight:700;font-size:0.9rem;padding:10px 22px;box-shadow:0 4px 14px rgba(0,0,0,0.25);" data-i18n-html="achieve_c1_btn">
-                อ่านสรุปเล่มประเมินฉบับเต็ม <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Card 2: Robotics Competition -->
-          <div class="card-academic" style="background:linear-gradient(135deg, #0f2b5c 0%, #1e529d 100%);color:#ffffff;border:1px solid rgba(255,255,255,0.2);padding:2.25rem;border-radius:20px;box-shadow:0 14px 35px rgba(15,43,92,0.35);display:flex;flex-direction:column;justify-content:space-between;">
-            <div>
-              <div style="margin-bottom:1.25rem;">
-                <span class="badge-tag" style="background:rgba(186,230,253,0.2);color:#bae6fd;border:1px solid rgba(186,230,253,0.5);font-size:0.82rem;padding:5px 14px;" data-i18n="achieve_c2_badge">
-                  🕶️ กิจกรรมเด่นเพื่อพัฒนาเยาวชน
-                </span>
-              </div>
-              <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:0.75rem;line-height:1.4;" data-i18n="achieve_c2_title">
-                การแข่งขันหุ่นยนต์ศรีสะเกษโรโบติกส์
-              </h3>
-              <p style="color:rgba(255,255,255,0.92);font-size:0.95rem;line-height:1.65;margin-bottom:1.25rem;" data-i18n="achieve_c2_desc">
-                จัดแข่งขันหุ่นยนต์เยาวชนชิงถ้วยเกียรติยศสูงสุด รวมทั้งสิ้น 33 รายการ สำหรับระดับการศึกษาขั้นพื้นฐาน อาชีวศึกษา และอุดมศึกษาทั่วประเทศ
-              </p>
-              <div style="font-size:0.85rem;color:rgba(255,255,255,0.82);margin-bottom:2rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-                <span data-i18n-html="achieve_c2_date"><i class="bi bi-calendar3" style="color:#fef08a;"></i> วันที่จัดงาน: 27 – 28 มิถุนายน 2569</span>
-                <span style="opacity:0.4;">|</span>
-                <span data-i18n-html="achieve_c2_loc"><i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> มหาวิทยาลัยราชภัฏศรีสะเกษ</span>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;">
-              <a href="#news" class="btn-secondary" style="background:#ffffff;color:var(--primary-navy) !important;border:none;font-weight:700;font-size:0.88rem;padding:9px 18px;box-shadow:0 4px 14px rgba(0,0,0,0.25);" data-i18n-html="achieve_c2_btn1">
-                <i class="bi bi-images" style="color:#0284c7;"></i> ภาพกิจกรรม
-              </a>
-              <a href="https://www.oass.sskru.ac.th/std.sskru/s17.html" target="_blank" class="btn-secondary" style="background:rgba(255,255,255,0.18);color:#ffffff !important;border:1px solid rgba(255,255,255,0.38);font-weight:600;font-size:0.88rem;padding:9px 18px;" data-i18n-html="achieve_c2_btn2">
-                <i class="bi bi-globe"></i> เว็บไซต์กิจกรรม
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab Content 3: Academic & Research -->
+      <!-- Tab Content: Academic & Research -->
       <div id="news-academic" class="news-tab-content" style="display:none;">
         <div class="bento-grid">
           <div class="card-academic">
@@ -821,7 +826,7 @@
         </div>
       </div>
 
-      <!-- Tab Content 4: Student Activities -->
+      <!-- Tab Content: Student Activities -->
       <div id="news-activity" class="news-tab-content" style="display:none;">
         <div class="bento-grid">
           <div class="card-academic">
@@ -840,9 +845,9 @@
   </section>
 
   <!-- =========================================================================
-       9. FACULTY SECTION (ทำเนียบคณาจารย์)
+       10. FACULTY SECTION (ทำเนียบคณาจารย์)
        ========================================================================= -->
-  <section id="lecturers" style="background-color: var(--bg-main);">
+  <section id="lecturers" style="background-color: #ffffff;">
     <div class="container">
       <div class="section-header">
         <div class="section-subtitle" data-i18n-html="fac_subtitle"><i class="bi bi-people"></i> MEET OUR FACULTY</div>
@@ -886,9 +891,9 @@
   </div>
 
   <!-- =========================================================================
-       10. DOWNLOADS & DOCUMENTS (ดาวน์โหลดเอกสารสาขา)
+       11. DOWNLOADS & DOCUMENTS (ดาวน์โหลดเอกสารสาขา)
        ========================================================================= -->
-  <section id="downloads" style="background-color: #ffffff;">
+  <section id="downloads" style="background-color: var(--bg-main);">
     <div class="container">
       <div class="section-header">
         <div class="section-subtitle" data-i18n-html="dl_subtitle"><i class="bi bi-download"></i> DOWNLOADS & DOCUMENTS</div>
@@ -929,7 +934,7 @@
   </section>
 
   <!-- =========================================================================
-       11. CONTACT & MAP SECTION (ช่องทางติดต่อ & แผนที่)
+       12. CONTACT & MAP SECTION (ช่องทางติดต่อ & แผนที่)
        ========================================================================= -->
   <section id="contact" style="background-color: var(--bg-main);">
     <div class="container">
@@ -1032,7 +1037,7 @@
   </section>
 
   <!-- =========================================================================
-       12. ACADEMIC FOOTER (สไตล์ chula.ac.th)
+       13. ACADEMIC FOOTER (สไตล์ chula.ac.th)
        ========================================================================= -->
   <footer class="academic-footer">
     <div class="container">
@@ -1058,7 +1063,7 @@
           <h5 style="color:#ffffff;margin-bottom:1.25rem;font-size:1.05rem;font-weight:600;border-bottom:2px solid var(--accent-pink);display:inline-block;padding-bottom:4px;" data-i18n="footer_col1_title">การศึกษาและหลักสูตร</h5>
           <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;font-size:0.9rem;">
             <li><a href="#curriculum" data-i18n-html="footer_link_tracks"><i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> กลุ่มวิชาความเชี่ยวชาญ</a></li>
-            <li><a href="#curriculum" onclick="showCurriculumPlanTab()" data-i18n-html="footer_link_schedule"><i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> แผนการเรียน 4 ปี</a></li>
+            <li><a href="#schedule" data-i18n-html="footer_link_schedule"><i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> แผนการเรียน 4 ปี</a></li>
             <li><a href="https://drive.google.com/file/d/1VjG1c3__p96kEBRSGuFNJtZXXD9A3SjB/view?usp=sharing" target="_blank" data-i18n-html="footer_link_tqf"><i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> เล่มหลักสูตร มคอ.2 (2568)</a></li>
             <li><a href="https://www.oass.sskru.ac.th/std.sskru/s17.html" target="_blank" data-i18n-html="footer_link_tcas"><i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> สมัครเข้าศึกษาต่อ TCAS</a></li>
           </ul>
@@ -1092,6 +1097,6 @@
   </footer>
 
   <!-- Main JavaScript with Version Cache Busting -->
-  <script src="js/main.js?v=2.3.0"></script>
+  <script src="js/main.js?v=2.2.0"></script>
 </body>
 </html>
