@@ -15,9 +15,12 @@ const translations = {
     brand_sub: 'คณะศิลปศาสตร์และวิทยาศาสตร์ มรภ.ศรีสะเกษ',
     nav_home: 'หน้าแรก',
     nav_about: 'เกี่ยวกับเรา',
-    nav_curriculum: 'หลักสูตร',
-    nav_schedule: 'แผนการเรียน',
-    nav_news: 'ข่าวสาร',
+    nav_curriculum: 'หลักสูตร <i class="bi bi-chevron-down nav-arrow"></i>',
+    nav_sub_tracks: '<i class="bi bi-stack"></i> กลุ่มวิชาความเชี่ยวชาญ',
+    nav_sub_schedule: '<i class="bi bi-calendar4-week"></i> แผนการเรียน 4 ปี',
+    nav_news: 'ข่าวสาร <i class="bi bi-chevron-down nav-arrow"></i>',
+    nav_sub_news: '<i class="bi bi-newspaper"></i> สาระความรู้และข่าวสาร',
+    nav_sub_quality: '<i class="bi bi-award-fill"></i> รายงานความสำเร็จ & คุณภาพ',
     nav_faculty: 'คณาจารย์',
     nav_downloads: 'ดาวน์โหลด',
     nav_contact: 'ติดต่อเรา',
@@ -295,9 +298,12 @@ const translations = {
     brand_sub: 'Faculty of Liberal Arts & Science, SSKRU',
     nav_home: 'Home',
     nav_about: 'About',
-    nav_curriculum: 'Curriculum',
-    nav_schedule: 'Study Plan',
-    nav_news: 'News',
+    nav_curriculum: 'Curriculum <i class="bi bi-chevron-down nav-arrow"></i>',
+    nav_sub_tracks: '<i class="bi bi-stack"></i> Specialization Tracks',
+    nav_sub_schedule: '<i class="bi bi-calendar4-week"></i> 4-Year Study Plan',
+    nav_news: 'News & Reports <i class="bi bi-chevron-down nav-arrow"></i>',
+    nav_sub_news: '<i class="bi bi-newspaper"></i> News & Articles',
+    nav_sub_quality: '<i class="bi bi-award-fill"></i> Quality & Achievements',
     nav_faculty: 'Faculty',
     nav_downloads: 'Downloads',
     nav_contact: 'Contact',
@@ -993,9 +999,9 @@ function initNavScrollSpy() {
     'about': 'about',
     'why-cs': 'about',
     'curriculum': 'curriculum',
-    'schedule': 'schedule',
-    'quality-reports': 'curriculum',
+    'schedule': 'curriculum',
     'news': 'news',
+    'quality-reports': 'news',
     'lecturers': 'lecturers',
     'downloads': 'downloads',
     'contact': 'contact'
@@ -1087,9 +1093,69 @@ function initNavScrollSpy() {
     });
 
     link.addEventListener('click', (e) => {
+      // If it's a dropdown toggle on mobile, let toggle handler manage it
+      if (window.innerWidth <= 1060 && link.classList.contains('dropdown-toggle')) {
+        return;
+      }
       const href = link.getAttribute('href');
       if (href && href.startsWith('#')) {
         navMenu.classList.remove('show');
+        const targetId = href.substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const targetOffset = targetEl.offsetTop - (navbar ? navbar.offsetHeight : 76);
+          window.scrollTo({
+            top: targetOffset,
+            behavior: 'smooth'
+          });
+          setActiveLink(targetId);
+        }
+      }
+    });
+  });
+
+  // Mobile Accordion Toggle for Dropdowns
+  document.querySelectorAll('.nav-item-dropdown > .dropdown-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      if (window.innerWidth <= 1060) {
+        e.preventDefault();
+        const parent = toggle.closest('.nav-item-dropdown');
+        if (parent) {
+          const isOpen = parent.classList.contains('open');
+          // Close other open dropdowns
+          document.querySelectorAll('.nav-item-dropdown').forEach(d => {
+            if (d !== parent) {
+              d.classList.remove('open');
+              const m = d.querySelector('.nav-dropdown-menu');
+              if (m) m.style.display = 'none';
+            }
+          });
+          if (isOpen) {
+            parent.classList.remove('open');
+            const menu = parent.querySelector('.nav-dropdown-menu');
+            if (menu) menu.style.display = 'none';
+          } else {
+            parent.classList.add('open');
+            const menu = parent.querySelector('.nav-dropdown-menu');
+            if (menu) menu.style.display = 'block';
+          }
+        }
+      }
+    });
+  });
+
+  // Dropdown Sub-Items Smooth Scrolling
+  document.querySelectorAll('.nav-dropdown-menu .dropdown-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      const href = item.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        navMenu.classList.remove('show');
+        document.querySelectorAll('.nav-item-dropdown').forEach(d => {
+          d.classList.remove('open');
+          const m = d.querySelector('.nav-dropdown-menu');
+          if (m && window.innerWidth <= 1060) m.style.display = 'none';
+        });
         const targetId = href.substring(1);
         const targetEl = document.getElementById(targetId);
         if (targetEl) {

@@ -58,9 +58,37 @@
       <ul class="nav-menu" id="navMenu">
         <li><a href="#hero" class="nav-link active" data-i18n="nav_home">หน้าแรก</a></li>
         <li><a href="#about" class="nav-link" data-i18n="nav_about">เกี่ยวกับเรา</a></li>
-        <li><a href="#curriculum" class="nav-link" data-i18n="nav_curriculum">หลักสูตร</a></li>
-        <li><a href="#schedule" class="nav-link" data-i18n="nav_schedule">แผนการเรียน</a></li>
-        <li><a href="#news" class="nav-link" data-i18n="nav_news">ข่าวสาร</a></li>
+        
+        <!-- Dropdown: หลักสูตร (Curriculum + Schedule) -->
+        <li class="nav-item-dropdown">
+          <a href="#curriculum" class="nav-link dropdown-toggle" data-i18n-html="nav_curriculum">
+            หลักสูตร <i class="bi bi-chevron-down nav-arrow"></i>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="#curriculum" class="dropdown-item" data-i18n-html="nav_sub_tracks">
+              <i class="bi bi-stack"></i> กลุ่มวิชาความเชี่ยวชาญ
+            </a>
+            <a href="#schedule" class="dropdown-item" data-i18n-html="nav_sub_schedule">
+              <i class="bi bi-calendar4-week"></i> แผนการเรียน 4 ปี
+            </a>
+          </div>
+        </li>
+
+        <!-- Dropdown: ข่าวสาร & รายงาน (News + Quality Reports) -->
+        <li class="nav-item-dropdown">
+          <a href="#news" class="nav-link dropdown-toggle" data-i18n-html="nav_news">
+            ข่าวสาร <i class="bi bi-chevron-down nav-arrow"></i>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="#news" class="dropdown-item" data-i18n-html="nav_sub_news">
+              <i class="bi bi-newspaper"></i> สาระความรู้และข่าวสาร
+            </a>
+            <a href="#quality-reports" class="dropdown-item" data-i18n-html="nav_sub_quality">
+              <i class="bi bi-award-fill"></i> รายงานความสำเร็จ & คุณภาพ
+            </a>
+          </div>
+        </li>
+
         <li><a href="#lecturers" class="nav-link" data-i18n="nav_faculty">คณาจารย์</a></li>
         <li><a href="#downloads" class="nav-link" data-i18n="nav_downloads">ดาวน์โหลด</a></li>
         <li><a href="#contact" class="nav-link" data-i18n="nav_contact">ติดต่อเรา</a></li>
