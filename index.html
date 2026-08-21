@@ -16,12 +16,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- Prestigious Academic Theme (Inspired by chula.ac.th) -->
-  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/theme.css?v=2.2.0">
 </head>
 <body>
 
   <!-- =========================================================================
-       1. TOP UTILITY BAR (Tools & Language Switcher)
+       1. TOP UTILITY BAR (Top Right: Link & Language Switcher)
        ========================================================================= -->
   <div class="top-bar">
     <div class="container">
@@ -29,17 +29,17 @@
         <a href="https://www.sskru.ac.th" target="_blank" class="top-tool-link" data-i18n-html="top_sskru_web">
           <i class="bi bi-bank2"></i> เว็บไซต์ มรภ.ศรีสะเกษ
         </a>
-        <div class="lang-switch">
-          <a href="javascript:void(0)" id="langTh" class="active" onclick="setLanguage('th')">TH</a>
-          <span style="opacity:0.4;">|</span>
-          <a href="javascript:void(0)" id="langEn" onclick="setLanguage('en')">EN</a>
+        <div class="lang-switch top-lang-switch">
+          <button type="button" class="lang-btn lang-btn-th active" data-lang="th" id="langTh" onclick="setLanguage('th')">TH</button>
+          <span style="opacity:0.4;font-size:0.75rem;">|</span>
+          <button type="button" class="lang-btn lang-btn-en" data-lang="en" id="langEn" onclick="setLanguage('en')">EN</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- =========================================================================
-       2. MAIN NAVBAR & HEADER
+       2. MAIN NAVBAR & HEADER (With Right Corner Language Toggle)
        ========================================================================= -->
   <nav class="navbar" id="navbar">
     <div class="container">
@@ -69,6 +69,14 @@
           <a href="https://www.oass.sskru.ac.th/std.sskru/s17.html" target="_blank" class="nav-cta" data-i18n-html="nav_cta">
             <i class="bi bi-mortarboard-fill"></i> สมัครเรียน TCAS
           </a>
+        </li>
+        <!-- Right Corner Navbar Language Toggle -->
+        <li style="margin-left:8px;display:flex;align-items:center;">
+          <div class="lang-switch nav-lang-switch">
+            <button type="button" class="lang-btn lang-btn-th active" data-lang="th" id="navLangTh" onclick="setLanguage('th')">TH</button>
+            <span style="opacity:0.3;font-size:0.75rem;padding:0 1px;">|</span>
+            <button type="button" class="lang-btn lang-btn-en" data-lang="en" id="navLangEn" onclick="setLanguage('en')">EN</button>
+          </div>
         </li>
       </ul>
     </div>
@@ -500,10 +508,10 @@
               <table class="custom-table">
                 <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
                 <tbody>
-                  <tr><td><span class="code-pill">CS101</span></td><td>พื้นฐานวิทยาการคอมพิวเตอร์ (Intro to CS)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS102</span></td><td>การเขียนโปรแกรมเบื้องต้น (Python)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">MA111</span></td><td>คณิตศาสตร์ดิสครีต (Discrete Math)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">GE101</span></td><td>ภาษาอังกฤษเพื่อการสื่อสาร (English Comm)</td><td>วิชาศึกษาทั่วไป</td></tr>
+                  <tr><td><span class="code-pill">CS101</span></td><td data-i18n="c_cs101">พื้นฐานวิทยาการคอมพิวเตอร์</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS102</span></td><td data-i18n="c_cs102">การเขียนโปรแกรมเบื้องต้น (Python)</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">MA111</span></td><td data-i18n="c_ma111">คณิตศาสตร์ดิสครีต</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">GE101</span></td><td data-i18n="c_ge101">ภาษาอังกฤษเพื่อการสื่อสาร</td><td data-i18n="cat_gen">วิชาศึกษาทั่วไป</td></tr>
                 </tbody>
               </table>
             </div>
@@ -515,10 +523,10 @@
               <table class="custom-table">
                 <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
                 <tbody>
-                  <tr><td><span class="code-pill">CS103</span></td><td>การเขียนโปรแกรมเชิงวัตถุ (Java OOP)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS104</span></td><td>โครงสร้างข้อมูลและอัลกอริทึม (Data Structures)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">MA112</span></td><td>สถิติและคณิตศาสตร์สัญกรณ์ (Statistics)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">GE102</span></td><td>ทักษะชีวิตและความเป็นพลเมือง (Civic Skills)</td><td>วิชาศึกษาทั่วไป</td></tr>
+                  <tr><td><span class="code-pill">CS103</span></td><td data-i18n="c_cs103">การเขียนโปรแกรมเชิงวัตถุ (Java)</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS104</span></td><td data-i18n="c_cs104">โครงสร้างข้อมูลและอัลกอริทึม</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">MA112</span></td><td data-i18n="c_ma112">สถิติและคณิตศาสตร์สัญกรณ์</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">GE102</span></td><td data-i18n="c_ge102">ทักษะชีวิตและความเป็นพลเมือง</td><td data-i18n="cat_gen">วิชาศึกษาทั่วไป</td></tr>
                 </tbody>
               </table>
             </div>
@@ -530,10 +538,10 @@
               <table class="custom-table">
                 <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
                 <tbody>
-                  <tr><td><span class="code-pill">CS201</span></td><td>สถาปัตยกรรมคอมพิวเตอร์และระบบปฏิบัติการ (OS)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS202</span></td><td>ระบบฐานข้อมูลและการออกแบบ (Database Design)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS203</span></td><td>วิศวกรรมซอฟต์แวร์เบื้องต้น (Software Eng)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS204</span></td><td>โครงข่ายคอมพิวเตอร์และการสื่อสาร (Networks)</td><td>วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS201</span></td><td data-i18n="c_cs201">สถาปัตยกรรมคอมพิวเตอร์และระบบปฏิบัติการ</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS202</span></td><td data-i18n="c_cs202">ระบบฐานข้อมูลและการออกแบบ</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS203</span></td><td data-i18n="c_cs203">วิศวกรรมซอฟต์แวร์เบื้องต้น</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS204</span></td><td data-i18n="c_cs204">โครงข่ายคอมพิวเตอร์และการสื่อสาร</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
                 </tbody>
               </table>
             </div>
@@ -545,10 +553,10 @@
               <table class="custom-table">
                 <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
                 <tbody>
-                  <tr><td><span class="code-pill">CS205</span></td><td>การพัฒนาเว็บแอปพลิเคชัน (Web Dev)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS206</span></td><td>การวิเคราะห์และออกแบบระบบเชิงวัตถุ (OOAD)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS207</span></td><td>ความมั่นคงปลอดภัยสารสนเทศพื้นฐาน (Cyber Security)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS208</span></td><td>คณิตศาสตร์และเครื่องมือสถิติสำหรับ AI</td><td>วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS205</span></td><td data-i18n="c_cs205">การพัฒนาเว็บแอปพลิเคชัน</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS206</span></td><td data-i18n="c_cs206">การวิเคราะห์และออกแบบระบบเชิงวัตถุ</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS207</span></td><td data-i18n="c_cs207">ความมั่นคงปลอดภัยสารสนเทศพื้นฐาน</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS208</span></td><td data-i18n="c_cs208">คณิตศาสตร์และเครื่องมือสถิติสำหรับ AI</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
                 </tbody>
               </table>
             </div>
@@ -565,10 +573,10 @@
               <table class="custom-table">
                 <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
                 <tbody>
-                  <tr><td><span class="code-pill">CS301</span></td><td>ปัญญาประดิษฐ์เชิงทฤษฎีและการประยุกต์ (AI)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS302</span></td><td>วิทยาการข้อมูลและการวิเคราะห์ Big Data</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS303</span></td><td>ภูมิสารสนเทศศาสตร์เบื้องต้น (GIS)</td><td>วิชาเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS3XX</span></td><td>วิชาเลือกเฉพาะทางสาขาวิชา (1)</td><td>วิชาเลือกเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS301</span></td><td data-i18n="c_cs301">ปัญญาประดิษฐ์เชิงทฤษฎีและการประยุกต์</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS302</span></td><td data-i18n="c_cs302">วิทยาการข้อมูลและการวิเคราะห์ Big Data</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS303</span></td><td data-i18n="c_cs303">ภูมิสารสนเทศศาสตร์เบื้องต้น</td><td data-i18n="cat_major">วิชาเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS3XX</span></td><td data-i18n="c_elec1">วิชาเลือกเฉพาะทางสาขาวิชา (1)</td><td data-i18n="cat_elec">วิชาเลือกเฉพาะสาขา</td></tr>
                 </tbody>
               </table>
             </div>
@@ -580,10 +588,10 @@
               <table class="custom-table">
                 <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
                 <tbody>
-                  <tr><td><span class="code-pill">CS304</span></td><td>การเตรียมพร้อมฝึกประสบการณ์วิชาชีพ</td><td>วิชาฝึกทักษะ</td></tr>
-                  <tr><td><span class="code-pill">CS305</span></td><td>โครงงานวิทยาการคอมพิวเตอร์ 1 (Senior Project I)</td><td>วิชาทำโครงการ</td></tr>
-                  <tr><td><span class="code-pill">CS3XX</span></td><td>วิชาเลือกเฉพาะทางสาขาวิชา (2)</td><td>วิชาเลือกเฉพาะสาขา</td></tr>
-                  <tr><td><span class="code-pill">CS3XX</span></td><td>วิชาเลือกเสรีองค์กรไอที (Free Elective)</td><td>วิชาเลือกเสรี</td></tr>
+                  <tr><td><span class="code-pill">CS304</span></td><td data-i18n="c_cs304">การเตรียมพร้อมฝึกประสบการณ์วิชาชีพ</td><td data-i18n="cat_skill">วิชาฝึกทักษะ</td></tr>
+                  <tr><td><span class="code-pill">CS305</span></td><td data-i18n="c_cs305">โครงงานวิทยาการคอมพิวเตอร์ 1</td><td data-i18n="cat_proj">วิชาทำโครงการ</td></tr>
+                  <tr><td><span class="code-pill">CS3XX</span></td><td data-i18n="c_elec2">วิชาเลือกเฉพาะทางสาขาวิชา (2)</td><td data-i18n="cat_elec">วิชาเลือกเฉพาะสาขา</td></tr>
+                  <tr><td><span class="code-pill">CS3XX</span></td><td data-i18n="c_free">วิชาเลือกเสรีองค์กรไอที</td><td data-i18n="cat_free_type">วิชาเลือกเสรี</td></tr>
                 </tbody>
               </table>
             </div>
@@ -595,7 +603,7 @@
               <table class="custom-table">
                 <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
                 <tbody>
-                  <tr><td><span class="code-pill">CS401</span></td><td>สหกิจศึกษาทางวิทยาการคอมพิวเตอร์ / ฝึกประสบการณ์</td><td>ปฏิบัติงานในสถานประกอบการจริง</td></tr>
+                  <tr><td><span class="code-pill">CS401</span></td><td data-i18n="c_cs401">สหกิจศึกษาทางวิทยาการคอมพิวเตอร์ / ฝึกงาน</td><td data-i18n="cat_coop">ปฏิบัติงานในสถานประกอบการจริง</td></tr>
                 </tbody>
               </table>
             </div>
@@ -607,8 +615,8 @@
               <table class="custom-table">
                 <thead><tr><th data-i18n="th_code">รหัสวิชา</th><th data-i18n="th_name">ชื่อรายวิชา</th><th data-i18n="th_cat">หมวดหมู่</th></tr></thead>
                 <tbody>
-                  <tr><td><span class="code-pill">CS402</span></td><td>สัมมนาและเทคโนโลยีไอทีเกิดใหม่ (IT Seminar)</td><td>สัมมนาวิชาชีพ</td></tr>
-                  <tr><td><span class="code-pill">CS403</span></td><td>โครงงานวิทยาการคอมพิวเตอร์ 2 (จบการศึกษา)</td><td>วิชาทำโครงการ</td></tr>
+                  <tr><td><span class="code-pill">CS402</span></td><td data-i18n="c_cs402">สัมมนาและเทคโนโลยีไอทีเกิดใหม่</td><td data-i18n="cat_seminar">สัมมนาวิชาชีพ</td></tr>
+                  <tr><td><span class="code-pill">CS403</span></td><td data-i18n="c_cs403">โครงงานวิทยาการคอมพิวเตอร์ 2 (จบการศึกษา)</td><td data-i18n="cat_proj">วิชาทำโครงการ</td></tr>
                 </tbody>
               </table>
             </div>
@@ -824,12 +832,12 @@
           <div class="card-academic">
             <span class="badge-tag" style="margin-bottom:0.75rem;">กิจกรรมสาขา</span>
             <h4 style="font-size:1.1rem;color:var(--primary-navy);margin-bottom:0.5rem;">ค่ายเตรียมความพร้อมทักษะโปรแกรมมิ่ง (CS Boot Camp)</h4>
-            <p style="font-size:0.9rem;color:var(--text-body);margin-bottom:1rem;">ติวเข้มทักษะพื้นฐานภาษา Python และการพัฒนาเว็บแอปสำหรับนักศึกษาชั้นปีที่ 1</p>
+            <p style="font-size:0.9rem;color:var(--text-body);">ติวเข้มทักษะพื้นฐานภาษา Python และการพัฒนาเว็บแอปสำหรับนักศึกษาชั้นปีที่ 1</p>
           </div>
           <div class="card-academic">
             <span class="badge-tag" style="margin-bottom:0.75rem;">กิจกรรมวิชาการ</span>
             <h4 style="font-size:1.1rem;color:var(--primary-navy);margin-bottom:0.5rem;">การนำเสนอผลงานโครงงานวิทยาการคอมพิวเตอร์ (CS Senior Project Day)</h4>
-            <p style="font-size:0.9rem;color:var(--text-body);margin-bottom:1rem;">จัดแสดงซอฟต์แวร์ แอปพลิเคชันมือถือ และผลงาน AI ของนักศึกษาชั้นปีที่ 4 ก่อนจบการศึกษา</p>
+            <p style="font-size:0.9rem;color:var(--text-body);">จัดแสดงซอฟต์แวร์ แอปพลิเคชันมือถือ และผลงาน AI ของนักศึกษาชั้นปีที่ 4 ก่อนจบการศึกษา</p>
           </div>
         </div>
       </div>
@@ -865,7 +873,7 @@
             <span id="modalRole" class="badge-tag" style="background:rgba(255,255,255,0.2);color:#fff;border:none;font-size:0.75rem;padding:2px 10px;"></span>
           </div>
         </div>
-        <button style="background:rgba(255,255,255,0.15);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;" onclick="closeModalDirect()">
+        <button type="button" style="background:rgba(255,255,255,0.15);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;" onclick="closeModalDirect()">
           <i class="bi bi-x-lg"></i>
         </button>
       </div>
@@ -1088,7 +1096,7 @@
     </div>
   </footer>
 
-  <!-- Main JavaScript -->
-  <script src="js/main.js"></script>
+  <!-- Main JavaScript with Version Cache Busting -->
+  <script src="js/main.js?v=2.2.0"></script>
 </body>
 </html>

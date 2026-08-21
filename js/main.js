@@ -129,8 +129,8 @@ const translations = {
     curr_c7_desc: 'การปรับแต่งภาพ การค้นหาวัตถุ และการสกัดคุณลักษณะจากภาพด้วยอัลกอริทึมคอมพิวเตอร์',
     curr_c8_title: '<i class="bi bi-map" style="color:var(--accent-pink);"></i> สารสนเทศภูมิศาสตร์ (GIS)',
     curr_c8_desc: 'การประยุกต์ใช้เทคโนโลยีสารสนเทศในการวิเคราะห์ แสดงผลข้อมูล และแผนที่ภูมิศาสตร์ขั้นสูง',
-    curr_c9_title: '<i class="bi bi-cpu" style="color:var(--accent-pink);"></i> การเรียนรู้ของเครื่อง (Machine Learning)',
-    curr_c9_desc: 'การสร้างและประเมินประสิทธิภาพโมเดลการเรียนรู้ Supervised & Unsupervised Learning',
+    curr_c9_title: '<i class="bi bi-robot" style="color:var(--accent-pink);"></i> ปัญญาประดิษฐ์ (Artificial Intelligence)',
+    curr_c9_desc: 'การพัฒนาเทคโนโลยีจำลองความฉลาดของมนุษย์ เช่น การประมวลผลภาษาธรรมชาติ (NLP)',
     curr_c10_title: '<i class="bi bi-terminal" style="color:var(--accent-pink);"></i> การเขียนโปรแกรมวิทยาการข้อมูล',
     curr_c10_desc: 'ปฏิบัติการเขียนโค้ดด้วยภาษา Python และ R เพื่อการสกัด ดึงข้อมูล และทำ Data Cleansing',
 
@@ -152,6 +152,43 @@ const translations = {
     y4_s1: '<i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 4 - ภาคเรียนที่ 1',
     y4_s2: '<i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> ชั้นปีที่ 4 - ภาคเรียนที่ 2',
 
+    // Course Names
+    c_cs101: 'พื้นฐานวิทยาการคอมพิวเตอร์',
+    c_cs102: 'การเขียนโปรแกรมเบื้องต้น (Python)',
+    c_ma111: 'คณิตศาสตร์ดิสครีต',
+    c_ge101: 'ภาษาอังกฤษเพื่อการสื่อสาร',
+    c_cs103: 'การเขียนโปรแกรมเชิงวัตถุ (Java)',
+    c_cs104: 'โครงสร้างข้อมูลและอัลกอริทึม',
+    c_ma112: 'สถิติและคณิตศาสตร์สัญกรณ์',
+    c_ge102: 'ทักษะชีวิตและความเป็นพลเมือง',
+    c_cs201: 'สถาปัตยกรรมคอมพิวเตอร์และระบบปฏิบัติการ',
+    c_cs202: 'ระบบฐานข้อมูลและการออกแบบ',
+    c_cs203: 'วิศวกรรมซอฟต์แวร์เบื้องต้น',
+    c_cs204: 'โครงข่ายคอมพิวเตอร์และการสื่อสาร',
+    c_cs205: 'การพัฒนาเว็บแอปพลิเคชัน',
+    c_cs206: 'การวิเคราะห์และออกแบบระบบเชิงวัตถุ',
+    c_cs207: 'ความมั่นคงปลอดภัยสารสนเทศพื้นฐาน',
+    c_cs208: 'คณิตศาสตร์และเครื่องมือสถิติสำหรับ AI',
+    c_cs301: 'ปัญญาประดิษฐ์เชิงทฤษฎีและการประยุกต์',
+    c_cs302: 'วิทยาการข้อมูลและการวิเคราะห์ Big Data',
+    c_cs303: 'ภูมิสารสนเทศศาสตร์เบื้องต้น',
+    c_cs304: 'การเตรียมพร้อมฝึกประสบการณ์วิชาชีพ',
+    c_cs305: 'โครงงานวิทยาการคอมพิวเตอร์ 1',
+    c_cs401: 'สหกิจศึกษาทางวิทยาการคอมพิวเตอร์ / ฝึกงาน',
+    c_cs402: 'สัมมนาและเทคโนโลยีไอทีเกิดใหม่',
+    c_cs403: 'โครงงานวิทยาการคอมพิวเตอร์ 2 (จบการศึกษา)',
+    c_elec1: 'วิชาเลือกเฉพาะทางสาขาวิชา (1)',
+    c_elec2: 'วิชาเลือกเฉพาะทางสาขาวิชา (2)',
+    c_free: 'วิชาเลือกเสรีองค์กรไอที',
+    cat_major: 'วิชาเฉพาะสาขา',
+    cat_gen: 'วิชาศึกษาทั่วไป',
+    cat_skill: 'วิชาฝึกทักษะ',
+    cat_proj: 'วิชาทำโครงการ',
+    cat_coop: 'ปฏิบัติงานในสถานประกอบการจริง',
+    cat_seminar: 'สัมมนาวิชาชีพ',
+    cat_elec: 'วิชาเลือกเฉพาะสาขา',
+    cat_free_type: 'วิชาเลือกเสรี',
+
     // Quality & Achievements Section
     achieve_subtitle: '<i class="bi bi-award-fill"></i> QUALITY & ACHIEVEMENTS',
     achieve_title: 'รายงานความสำเร็จและคุณภาพหลักสูตร',
@@ -159,14 +196,14 @@ const translations = {
     achieve_c1_badge: '🏆 การรับรองมาตรฐาน AUN-QA',
     achieve_c1_title: 'ผลการประเมินคุณภาพสาขาวิชาฯ ปีการศึกษา 2568',
     achieve_c1_desc: 'ระดับคะแนนความพึงพอใจดีเยี่ยม ได้รับการประเมินคุณภาพครบทุกเกณฑ์',
-    achieve_c1_date: '<i class="bi bi-calendar3" style="color:#60a5fa;"></i> ประเมินเมื่อ: 16 – 17 สิงหาคม 2568',
-    achieve_c1_loc: '<i class="bi bi-geo-alt-fill" style="color:#f43f5e;"></i> คณะศิลปศาสตร์และวิทยาศาสตร์ มรภ.ศรีสะเกษ',
+    achieve_c1_date: '<i class="bi bi-calendar3" style="color:#93c5fd;"></i> ประเมินเมื่อ: 16 – 17 สิงหาคม 2568',
+    achieve_c1_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> คณะศิลปศาสตร์และวิทยาศาสตร์ มรภ.ศรีสะเกษ',
     achieve_c1_btn: 'อ่านสรุปเล่มประเมินฉบับเต็ม <i class="bi bi-arrow-right"></i>',
     achieve_c2_badge: '🕶️ กิจกรรมเด่นเพื่อพัฒนาเยาวชน',
     achieve_c2_title: 'การแข่งขันหุ่นยนต์ศรีสะเกษโรโบติกส์',
     achieve_c2_desc: 'จัดแข่งขันหุ่นยนต์เยาวชนชิงถ้วยเกียรติยศสูงสุด รวมทั้งสิ้น 33 รายการ สำหรับระดับการศึกษาขั้นพื้นฐาน อาชีวศึกษา และอุดมศึกษาทั่วประเทศ',
     achieve_c2_date: '<i class="bi bi-calendar3" style="color:#fef08a;"></i> วันที่จัดงาน: 27 – 28 มิถุนายน 2569',
-    achieve_c2_loc: '<i class="bi bi-geo-alt-fill" style="color:#f43f5e;"></i> มหาวิทยาลัยราชภัฏศรีสะเกษ',
+    achieve_c2_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> มหาวิทยาลัยราชภัฏศรีสะเกษ',
     achieve_c2_btn1: '<i class="bi bi-images" style="color:#0284c7;"></i> ภาพกิจกรรม',
     achieve_c2_btn2: '<i class="bi bi-globe"></i> เว็บไซต์กิจกรรม',
 
@@ -237,16 +274,16 @@ const translations = {
     footer_desc: '"เชี่ยวชาญด้านวิทยาการคอมพิวเตอร์ มีคุณธรรม นำนวัตกรรมเพื่อพัฒนาท้องถิ่น"<br>คณะศิลปศาสตร์และวิทยาศาสตร์ มหาวิทยาลัยราชภัฏศรีสะเกษ',
     footer_address: '<i class="bi bi-geo-alt-fill" style="color:var(--accent-pink);"></i> 319 ถ.ไทยพันทา ต.โพธิ์ อ.เมือง จ.ศรีสะเกษ 33000',
     footer_col1_title: 'การศึกษาและหลักสูตร',
-    footer_col2_title: 'ข้อมูลหน่วยงาน',
-    footer_col3_title: 'ติดต่อสาขาวิชาฯ',
     footer_link_tracks: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> กลุ่มวิชาความเชี่ยวชาญ',
     footer_link_schedule: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> แผนการเรียน 4 ปี',
     footer_link_tqf: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> เล่มหลักสูตร มคอ.2 (2568)',
     footer_link_tcas: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> สมัครเข้าศึกษาต่อ TCAS',
+    footer_col2_title: 'ข้อมูลหน่วยงาน',
     footer_link_about: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> ปรัชญาและวิสัยทัศน์',
     footer_link_fac: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> ทำเนียบคณาจารย์',
     footer_link_news: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> ผลงานวิจัยและนวัตกรรม',
     footer_link_sskru: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> มหาวิทยาลัยราชภัฏศรีสะเกษ',
+    footer_col3_title: 'ติดต่อสาขาวิชาฯ',
     footer_contact_bldg: '<i class="bi bi-building" style="color:var(--accent-pink);"></i> ชั้น 5 อาคาร 4 (LASC)',
     footer_copy: '&copy; 2026 สาขาวิชาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยราชภัฏศรีสะเกษ (CS SSKRU). All rights reserved.'
   },
@@ -255,48 +292,48 @@ const translations = {
     // Top Bar & Navbar
     top_sskru_web: '<i class="bi bi-bank2"></i> SSKRU Website',
     brand_title: 'Computer Science',
-    brand_sub: 'Faculty of Liberal Arts and Science, SSKRU',
+    brand_sub: 'Faculty of Liberal Arts & Science, SSKRU',
     nav_home: 'Home',
-    nav_about: 'About Us',
+    nav_about: 'About',
     nav_curriculum: 'Curriculum',
     nav_schedule: 'Study Plan',
     nav_news: 'News',
     nav_faculty: 'Faculty',
     nav_downloads: 'Downloads',
     nav_contact: 'Contact',
-    nav_cta: '<i class="bi bi-mortarboard-fill"></i> Apply TCAS',
+    nav_cta: '<i class="bi bi-mortarboard-fill"></i> TCAS Apply',
 
     // Hero Section
-    hero_badge: '<i class="bi bi-stars"></i> Bachelor of Science (B.Sc.) Revised 2025',
-    hero_title: 'Shaping Future Leaders in<br><span class="text-highlight">Computer Science</span> & AI',
-    hero_desc: '"Mastering Advanced Tech, Driving Future Software Innovation" A modern, hands-on curriculum preparing you to become Full-Stack Developers, AI & Data Scientists, and Global Software Engineers.',
-    hero_btn_apply: '<i class="bi bi-mortarboard-fill"></i> Apply for Admission (TCAS)',
-    hero_btn_curriculum: '<i class="bi bi-journal-code"></i> Curriculum Details',
+    hero_badge: '<i class="bi bi-stars"></i> Bachelor of Science (B.Sc.) Program Revised 2025',
+    hero_title: 'Empowering Future Leaders in<br><span class="text-highlight">Computer Science</span> & AI',
+    hero_desc: '"Master Advanced Technologies, Innovating for the Next Generation" Modern practical curriculum preparing you for Full-Stack Developer, AI & Data Scientist, and Global Software Engineer roles.',
+    hero_btn_apply: '<i class="bi bi-mortarboard-fill"></i> Apply Now (TCAS)',
+    hero_btn_curriculum: '<i class="bi bi-journal-code"></i> Curriculum Overview',
     stat_years_num: '4 Years',
-    stat_years_label: 'Study Duration',
+    stat_years_label: 'Duration of Study',
     stat_credits_num: '133',
-    stat_credits_label: 'Min Credits',
+    stat_credits_label: 'Minimum Credits',
     stat_job_num: '100%',
     stat_job_label: 'Employment Rate',
     stat_alumni_num: '1,000+',
     stat_alumni_label: 'Alumni Network',
 
     // Quick Access Bar
-    qa_tcas_title: 'TCAS Admission',
-    qa_tcas_desc: 'Requirements & Quotas',
-    qa_curr_title: 'B.Sc. Program',
-    qa_curr_desc: '3 Specialized Tracks',
-    qa_plan_title: '4-Year Study Plan',
-    qa_plan_desc: 'Courses for All Semesters',
+    qa_tcas_title: 'Apply TCAS',
+    qa_tcas_desc: 'Admission requirements & quotas',
+    qa_curr_title: 'B.Sc. Curriculum',
+    qa_curr_desc: '3 Specialized Career Tracks',
+    qa_plan_title: '4-Year Plan',
+    qa_plan_desc: 'Semester-by-semester courses',
     qa_fac_title: 'Faculty & Research',
-    qa_fac_desc: 'Profiles & Publications',
+    qa_fac_desc: 'Profiles & national publications',
     qa_doc_title: 'Downloads',
-    qa_doc_desc: 'TQF.2 & Forms',
+    qa_doc_desc: 'TQF.2 handbook & student forms',
 
     // About Section
     about_subtitle: '<i class="bi bi-info-circle"></i> ABOUT OUR PROGRAM',
-    about_title: 'Strategic Program Overview',
-    about_desc: 'Goal-oriented structure, learning outcomes, and educational excellence for future innovators.',
+    about_title: 'Strategic Curriculum Framework',
+    about_desc: 'Program objectives, learning outcomes, and future-oriented graduate competencies.',
     tab_btn_philosophy: '<i class="bi bi-lightbulb"></i> Philosophy',
     tab_btn_vision: '<i class="bi bi-eye"></i> Vision & Mission',
     tab_btn_objectives: '<i class="bi bi-bullseye"></i> Objectives',
@@ -372,8 +409,8 @@ const translations = {
     curr_c7_desc: 'Image enhancement, computer vision algorithms, object detection, and feature extraction.',
     curr_c8_title: '<i class="bi bi-map" style="color:var(--accent-pink);"></i> Geographic Info Systems (GIS)',
     curr_c8_desc: 'Spatial data modeling, geo-analytics, and advanced geospatial mapping applications.',
-    curr_c9_title: '<i class="bi bi-cpu" style="color:var(--accent-pink);"></i> Machine Learning',
-    curr_c9_desc: 'Building and evaluating supervised & unsupervised machine learning predictive models.',
+    curr_c9_title: '<i class="bi bi-robot" style="color:var(--accent-pink);"></i> Artificial Intelligence',
+    curr_c9_desc: 'Developing intelligence simulation systems, machine learning, and natural language processing.',
     curr_c10_title: '<i class="bi bi-terminal" style="color:var(--accent-pink);"></i> Data Science Programming',
     curr_c10_desc: 'Hands-on Python and R programming for data extraction, manipulation, and pipeline engineering.',
 
@@ -395,6 +432,43 @@ const translations = {
     y4_s1: '<i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> Year 4 - Semester 1',
     y4_s2: '<i class="bi bi-clock-fill" style="color:var(--accent-pink);"></i> Year 4 - Semester 2',
 
+    // Course Names
+    c_cs101: 'Introduction to Computer Science',
+    c_cs102: 'Fundamental Programming (Python)',
+    c_ma111: 'Discrete Mathematics',
+    c_ge101: 'English for Communication',
+    c_cs103: 'Object-Oriented Programming (Java)',
+    c_cs104: 'Data Structures and Algorithms',
+    c_ma112: 'Statistics & Mathematical Notation',
+    c_ge102: 'Life Skills & Active Citizenship',
+    c_cs201: 'Computer Architecture & Operating Systems',
+    c_cs202: 'Database Systems & Design',
+    c_cs203: 'Introduction to Software Engineering',
+    c_cs204: 'Computer Networks & Communications',
+    c_cs205: 'Web Application Development',
+    c_cs206: 'Object-Oriented Analysis & Design',
+    c_cs207: 'Fundamentals of Information Security',
+    c_cs208: 'Mathematics & Statistical Tools for AI',
+    c_cs301: 'Theoretical & Applied Artificial Intelligence',
+    c_cs302: 'Data Science & Big Data Analytics',
+    c_cs303: 'Introduction to Geographic Info Science',
+    c_cs304: 'Professional Internship Preparation',
+    c_cs305: 'Computer Science Senior Project I',
+    c_cs401: 'Cooperative Education / Internship',
+    c_cs402: 'Seminar in Emerging IT Technologies',
+    c_cs403: 'Computer Science Capstone Project II',
+    c_elec1: 'Specialized Major Elective (I)',
+    c_elec2: 'Specialized Major Elective (II)',
+    c_free: 'Free Elective Course',
+    cat_major: 'Major Required',
+    cat_gen: 'General Education',
+    cat_skill: 'Practical Skills',
+    cat_proj: 'Senior Project',
+    cat_coop: 'Professional Practicum',
+    cat_seminar: 'Professional Seminar',
+    cat_elec: 'Major Elective',
+    cat_free_type: 'Free Elective',
+
     // Quality & Achievements Section
     achieve_subtitle: '<i class="bi bi-award-fill"></i> QUALITY & ACHIEVEMENTS',
     achieve_title: 'Quality & Achievements Report',
@@ -402,14 +476,14 @@ const translations = {
     achieve_c1_badge: '🏆 AUN-QA Accreditation',
     achieve_c1_title: 'Program Quality Assessment Results (AY 2025)',
     achieve_c1_desc: 'Achieved Excellent satisfaction ratings, fully satisfying all rigorous academic criteria.',
-    achieve_c1_date: '<i class="bi bi-calendar3" style="color:#60a5fa;"></i> Assessment Date: August 16–17, 2025',
-    achieve_c1_loc: '<i class="bi bi-geo-alt-fill" style="color:#f43f5e;"></i> Faculty of Liberal Arts & Science, SSKRU',
+    achieve_c1_date: '<i class="bi bi-calendar3" style="color:#93c5fd;"></i> Assessment Date: August 16–17, 2025',
+    achieve_c1_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> Faculty of Liberal Arts & Science, SSKRU',
     achieve_c1_btn: 'Read Full Assessment Report <i class="bi bi-arrow-right"></i>',
     achieve_c2_badge: '🕶️ Youth & Regional Highlight',
     achieve_c2_title: 'Sisaket Robotics Competition',
     achieve_c2_desc: 'National youth robotics championship featuring 33 competitive categories across primary, vocational, and university divisions.',
     achieve_c2_date: '<i class="bi bi-calendar3" style="color:#fef08a;"></i> Event Date: June 27–28, 2026',
-    achieve_c2_loc: '<i class="bi bi-geo-alt-fill" style="color:#f43f5e;"></i> Sisaket Rajabhat University',
+    achieve_c2_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> Sisaket Rajabhat University',
     achieve_c2_btn1: '<i class="bi bi-images" style="color:#0284c7;"></i> Photo Gallery',
     achieve_c2_btn2: '<i class="bi bi-globe"></i> Event Website',
 
@@ -448,55 +522,55 @@ const translations = {
     // Downloads Section
     dl_subtitle: '<i class="bi bi-download"></i> DOWNLOADS & DOCUMENTS',
     dl_title: 'Downloads & Documents',
-    dl_desc: 'Access curriculum handbooks, enrollment guides, and essential student forms.',
-    dl_c1_title: '<i class="bi bi-file-earmark-pdf-fill" style="color:#ef4444;"></i> B.Sc. Curriculum Document (TQF.2)',
-    dl_c1_desc: 'Detailed course structure, total credit requirements, and 4-year study plan (Revised 2025).',
+    dl_desc: 'Official program handbooks, student registration guides, and departmental resources.',
+    dl_c1_title: '<i class="bi bi-file-earmark-pdf-fill" style="color:#ef4444;"></i> B.Sc. Curriculum Handbook (TQF.2)',
+    dl_c1_desc: 'Detailed course structures, 133 total credits requirement, and 4-year progression plan (Revised 2025).',
     dl_c1_btn: '<i class="bi bi-download"></i> Download PDF',
-    dl_c2_title: '<i class="bi bi-person-check-fill" style="color:var(--accent-success);"></i> New Student Registration & Enrollment Guide',
-    dl_c2_desc: 'Document checklist and registration guidelines for all TCAS rounds at Sisaket Rajabhat University.',
+    dl_c2_title: '<i class="bi bi-person-check-fill" style="color:var(--accent-success);"></i> Freshmen Registration & Enrollment Guide',
+    dl_c2_desc: 'Comprehensive document submission guide for all admitted TCAS rounds at Sisaket Rajabhat University.',
     dl_c2_btn: '<i class="bi bi-box-arrow-up-right"></i> View Online Guide',
 
     // Contact Section
     contact_subtitle: '<i class="bi bi-chat-left-text"></i> CONNECT WITH US',
     contact_title: 'Contact Department',
-    contact_desc: 'Have questions regarding admissions, curriculum, or partnerships? Reach out to us anytime.',
+    contact_desc: 'Have questions about programs, admission quotas, or course prerequisites? Get in touch with us anytime.',
     contact_phone_title: 'Department Phone',
-    contact_phone_sub: 'Hotline: 084-298-2456',
-    contact_email_title: 'Department Email',
-    contact_email_sub: 'Head of Department (Asst. Prof. Dr. Kanittha Inthichit)',
+    contact_phone_sub: 'Hotline: (+66) 84-298-2456',
+    contact_email_title: 'Official Email',
+    contact_email_sub: 'Head of Dept. (Asst. Prof. Dr. Kanittha Inthichit)',
     contact_loc_title: 'Campus Location',
-    contact_loc_desc: '5th Floor, Dean\'s Office Building, Faculty of Liberal Arts and Science (LASC)<br>Sisaket Rajabhat University, Thaipantha Rd., Mueang, Sisaket 33000',
-    social_line_title: 'LINE Chatbot "Nong Lamduan"',
-    social_line_desc: 'Inquire about admissions, scholarships, and curriculum with instant answers 24/7.',
+    contact_loc_desc: '5th Floor, Dean Office Building, Faculty of Liberal Arts & Science (LASC)<br>Sisaket Rajabhat University, Thaipantha Rd., Mueang, Sisaket 33000 Thailand',
+    social_line_title: 'LINE AI "Nong Lamduan"',
+    social_line_desc: 'Get 24/7 instant answers about admissions, scholarships, and academic curriculum.',
     social_line_btn: '<i class="bi bi-line"></i> Add LINE Friend',
     social_fb_title: 'Facebook Fanpage',
-    social_fb_desc: 'Follow our vibrant activities, student projects, scholarships, and announcements.',
-    social_fb_btn: '<i class="bi bi-facebook"></i> Follow Facebook',
-    social_tiktok_title: 'TikTok Channel',
-    social_tiktok_desc: 'Watch short video clips, student showcases, and exciting life in our department.',
+    social_fb_desc: 'Stay updated with student achievements, workshops, scholarships, and lively class moments.',
+    social_fb_btn: '<i class="bi bi-facebook"></i> Visit Facebook',
+    social_tiktok_title: 'TikTok Department Channel',
+    social_tiktok_desc: 'Watch fun short videos, senior capstone project spotlights, and campus life.',
     social_tiktok_btn: '<i class="bi bi-tiktok"></i> Watch on TikTok',
 
     // Footer
-    footer_desc: '"Excellence in Computer Science, Guided by Ethics, Innovating for Local Development"<br>Faculty of Liberal Arts and Science, Sisaket Rajabhat University',
+    footer_desc: '"Excellence in Computer Science, Guided by Ethics, Innovating for Local Development"<br>Faculty of Liberal Arts & Science, Sisaket Rajabhat University',
     footer_address: '<i class="bi bi-geo-alt-fill" style="color:var(--accent-pink);"></i> 319 Thaipantha Rd., Pho, Mueang, Sisaket 33000 Thailand',
-    footer_col1_title: 'Academics & Program',
-    footer_col2_title: 'Department Info',
-    footer_col3_title: 'Contact Us',
-    footer_link_tracks: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Specialized Tracks',
+    footer_col1_title: 'Academic Programs',
+    footer_link_tracks: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Specialization Tracks',
     footer_link_schedule: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> 4-Year Study Plan',
-    footer_link_tqf: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> TQF.2 Curriculum Book (2025)',
-    footer_link_tcas: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Apply TCAS Admission',
+    footer_link_tqf: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> TQF.2 Handbook (2025)',
+    footer_link_tcas: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> TCAS Admission',
+    footer_col2_title: 'About University',
     footer_link_about: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Philosophy & Vision',
     footer_link_fac: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Faculty Directory',
     footer_link_news: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Research & Innovation',
-    footer_link_sskru: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Sisaket Rajabhat University',
-    footer_contact_bldg: '<i class="bi bi-building" style="color:var(--accent-pink);"></i> 5th Fl., Bldg 4 (LASC)',
+    footer_link_sskru: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Sisaket Rajabhat Univ.',
+    footer_col3_title: 'Direct Contact',
+    footer_contact_bldg: '<i class="bi bi-building" style="color:var(--accent-pink);"></i> Floor 5, Building 4 (LASC)',
     footer_copy: '&copy; 2026 Department of Computer Science, Sisaket Rajabhat University (CS SSKRU). All rights reserved.'
   }
 };
 
 // ============================================================================
-// 2. ข้อมูลคณาจารย์ประจำหลักสูตร (Bilingual Faculty Data)
+// 2. FACULTY DATA (Bilingual Structured Data)
 // ============================================================================
 const lecturersData = [
   {
@@ -669,37 +743,50 @@ const lecturersData = [
 ];
 
 // ============================================================================
-// 3. i18n LANGUAGE SWITCHER ENGINE
+// 3. i18n LANGUAGE SWITCHER ENGINE (Bulletproof & Synchronous)
 // ============================================================================
 function getCurrentLanguage() {
-  return localStorage.getItem('cs_sskru_lang') || 'th';
+  try {
+    return localStorage.getItem('cs_sskru_lang') || 'th';
+  } catch (e) {
+    return 'th';
+  }
 }
 
 function setLanguage(lang) {
   if (lang !== 'th' && lang !== 'en') lang = 'th';
   
   // Save preference
-  localStorage.setItem('cs_sskru_lang', lang);
+  try {
+    localStorage.setItem('cs_sskru_lang', lang);
+  } catch (e) {
+    console.warn('LocalStorage not accessible', e);
+  }
   document.documentElement.lang = lang;
 
-  // Toggle active class on language buttons
-  const langTh = document.getElementById('langTh');
-  const langEn = document.getElementById('langEn');
-  if (langTh && langEn) {
+  // Toggle active class on all TH buttons
+  document.querySelectorAll('.lang-btn-th, #langTh, #navLangTh').forEach(btn => {
     if (lang === 'th') {
-      langTh.classList.add('active');
-      langEn.classList.remove('active');
+      btn.classList.add('active');
     } else {
-      langEn.classList.add('active');
-      langTh.classList.remove('active');
+      btn.classList.remove('active');
     }
-  }
+  });
+
+  // Toggle active class on all EN buttons
+  document.querySelectorAll('.lang-btn-en, #langEn, #navLangEn').forEach(btn => {
+    if (lang === 'en') {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
 
   // Update text content with data-i18n
   const dict = translations[lang] || translations.th;
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (dict[key] !== undefined) {
+    if (dict && dict[key] !== undefined) {
       el.textContent = dict[key];
     }
   });
@@ -707,7 +794,7 @@ function setLanguage(lang) {
   // Update HTML content with data-i18n-html
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
-    if (dict[key] !== undefined) {
+    if (dict && dict[key] !== undefined) {
       el.innerHTML = dict[key];
     }
   });
@@ -715,6 +802,10 @@ function setLanguage(lang) {
   // Re-render faculty cards in selected language
   renderLecturers(lang);
 }
+
+// Bind to window for direct inline accessibility
+window.setLanguage = setLanguage;
+window.getCurrentLanguage = getCurrentLanguage;
 
 // ============================================================================
 // 4. RENDER FACULTY CARDS (Academic Style with Bilingual Support)
@@ -750,13 +841,14 @@ function renderLecturers(lang) {
       <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.6rem;font-family:var(--font-heading);font-weight:500;">${subText}</div>
       <span class="badge-tag" style="font-size:0.75rem;padding:3px 12px;margin-bottom:0.85rem;">${roleText}</span>
       <p style="font-size:0.9rem;color:var(--text-body);margin-bottom:1.5rem;flex-grow:1;line-height:1.6;">${expertiseText}</p>
-      <button class="btn-secondary" style="width:100%;justify-content:center;font-size:0.88rem;padding:10px 14px;" onclick="openModal(${lec.id})">
+      <button type="button" class="btn-secondary" style="width:100%;justify-content:center;font-size:0.88rem;padding:10px 14px;" onclick="openModal(${lec.id})">
         ${dict.fac_btn_view || '<i class="bi bi-person-lines-fill" style="color:var(--accent-brand);"></i> ดูประวัติและผลงาน'}
       </button>
     `;
     lecturersGrid.appendChild(card);
   });
 }
+window.renderLecturers = renderLecturers;
 
 // ============================================================================
 // 5. MODAL HANDLERS (Bilingual Support)
@@ -842,6 +934,10 @@ function closeModalDirect() {
   modal.style.visibility = 'hidden';
 }
 
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.closeModalDirect = closeModalDirect;
+
 // ============================================================================
 // 6. TAB SWITCHING HANDLERS
 // ============================================================================
@@ -876,6 +972,11 @@ function switchNewsTab(tabId, btn) {
   if (target) target.style.display = 'block';
   btn.classList.add('active');
 }
+
+window.switchTab = switchTab;
+window.switchTrack = switchTrack;
+window.switchYear = switchYear;
+window.switchNewsTab = switchNewsTab;
 
 // ============================================================================
 // 7. NAVIGATION SCROLLSPY & SLIDING ACTIVE INDICATOR
@@ -1073,9 +1174,18 @@ function initHeroParallax() {
 }
 
 // ============================================================================
-// 9. INITIALIZATION ON DOM READY
+// 9. INITIALIZATION ON DOM READY & EVENT ATTACHMENTS
 // ============================================================================
 document.addEventListener('DOMContentLoaded', () => {
+  // Bind all buttons with [data-lang]
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const selectedLang = btn.getAttribute('data-lang');
+      setLanguage(selectedLang);
+    });
+  });
+
   // Apply saved language or default to Thai
   const savedLang = getCurrentLanguage();
   setLanguage(savedLang);
