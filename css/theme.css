@@ -1251,7 +1251,8 @@ section {
 }
 
 @media (max-width: 992px) {
-  .top-bar { display: none; }
+  .top-bar { display: block; height: 38px; }
+  .top-bar .top-tools { justify-content: flex-end; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 450px; }
 }
 
