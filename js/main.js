@@ -649,109 +649,287 @@ function copyCurrentUrl() {
   });
 }
 
-/* ==========================================================================
-   PREMIUM FEATURE: HERO PARTICLE CANVAS
-   ========================================================================== */
+// ==========================================================================
+// MOTION & ANIMATIONS MODULE (ความรับผิดชอบ: คนที่ 1)
+// ==========================================================================
+
+// --- 1. Card Glow Effect (Mouse Move Tracking - Optimized) ---
+function initCardGlowEffect() {
+  document.addEventListener('mousemove', (e) => {
+    const card = e.target.closest('.card-dark');
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+}
+
+// --- 2. Stats Counter Animation ---
+function initStatsCounter() {
+  const statsSection = document.querySelector('.hero-stats');
+  if (!statsSection) return;
+
+  const animateCounters = () => {
+    const statElements = document.querySelectorAll('.hero-stats .stat-item h4');
+    const duration = 1500; // 1.5 seconds
+
+    statElements.forEach(el => {
+      const originalText = el.textContent.trim();
+      const match = originalText.match(/([\d,]+)/);
+      if (!match) return;
+
+      const rawNum = match[0];
+      const target = parseInt(rawNum.replace(/,/g, ''), 10);
+      const firstIndex = originalText.indexOf(rawNum);
+      const prefix = originalText.substring(0, firstIndex);
+      const suffix = originalText.substring(firstIndex + rawNum.length);
+      const hasComma = rawNum.includes(',');
+
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const easeProgress = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        
+        const currentValue = Math.floor(easeProgress * target);
+        
+        let formattedVal = currentValue;
+        if (hasComma) {
+          formattedVal = currentValue.toLocaleString('en-US');
+        }
+
+        el.textContent = prefix + formattedVal + suffix;
+
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          el.textContent = originalText;
+        }
+      };
+
+      el.textContent = prefix + "0" + suffix;
+      window.requestAnimationFrame(step);
+    });
+  };
+
+  const statsObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  statsObserver.observe(statsSection);
+}
+
+// --- 3. Interactive Particle Canvas Background ---
 function initHeroParticles() {
-  const canvas = document.getElementById('heroParticleCanvas');
-  if (!canvas) return;
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+
+  // Create canvas
+  let canvas = document.getElementById('hero-canvas');
+  if (!canvas) {
+    canvas = document.createElement('canvas');
+    canvas.id = 'hero-canvas';
+    hero.insertBefore(canvas, hero.firstChild);
+  }
 
   const ctx = canvas.getContext('2d');
-  let width = (canvas.width = canvas.parentElement.offsetWidth);
-  let height = (canvas.height = canvas.parentElement.offsetHeight);
+  let animationFrameId;
 
-  let mouse = { x: null, y: null, radius: 140 };
+  // Set canvas size dynamically
+  function resizeCanvas() {
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
 
-  window.addEventListener('resize', () => {
-    if (!canvas.parentElement) return;
-    width = canvas.width = canvas.parentElement.offsetWidth;
-    height = canvas.height = canvas.parentElement.offsetHeight;
-    initNodes();
-  });
+  // Particle configuration
+  const particles = [];
+  const particleCount = 60; // Sleek and professional particle count
+  const connectionDistance = 120;
+  const mouse = { x: null, y: null, radius: 150 };
 
-  canvas.parentElement.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.7;
+      this.vy = (Math.random() - 0.5) * 0.7;
+      this.size = Math.random() * 2 + 1;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      // Bounce off walls and clamp bounds
+      if (this.x < 0) { this.x = 0; this.vx = -this.vx; }
+      else if (this.x > canvas.width) { this.x = canvas.width; this.vx = -this.vx; }
+      
+      if (this.y < 0) { this.y = 0; this.vy = -this.vy; }
+      else if (this.y > canvas.height) { this.y = canvas.height; this.vy = -this.vy; }
+
+      // Mouse interaction (repel particles)
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = this.x - mouse.x;
+        const dy = this.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < mouse.radius) {
+          const force = (mouse.radius - dist) / mouse.radius;
+          const angle = Math.atan2(dy, dx);
+          this.x += Math.cos(angle) * force * 1.5;
+          this.y += Math.sin(angle) * force * 1.5;
+        }
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(96, 165, 250, 0.3)'; // Primary blue particle color
+      ctx.fill();
+    }
+  }
+
+  // Generate particles
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  // Mouse event listeners for interaction
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
   });
 
-  canvas.parentElement.addEventListener('mouseleave', () => {
+  hero.addEventListener('mouseleave', () => {
     mouse.x = null;
     mouse.y = null;
   });
 
-  let nodes = [];
-  const nodeCount = Math.min(50, Math.floor((width * height) / 18000));
-
-  function initNodes() {
-    nodes = [];
-    for (let i = 0; i < nodeCount; i++) {
-      nodes.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.7,
-        vy: (Math.random() - 0.5) * 0.7,
-        radius: Math.random() * 2 + 1.5,
-        color: i % 3 === 0 ? 'rgba(96, 165, 250, ' : 'rgba(99, 102, 241, '
-      });
-    }
-  }
-
+  // Animation Loop
   function animate() {
-    ctx.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    for (let i = 0; i < nodes.length; i++) {
-      const p = nodes[i];
-      p.x += p.vx;
-      p.y += p.vy;
+    // Update and draw particles
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
 
-      if (p.x < 0 || p.x > width) p.vx *= -1;
-      if (p.y < 0 || p.y > height) p.vy *= -1;
-
-      // Draw particle
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `${p.color}0.7)`;
-      ctx.fill();
-
-      // Connect with other particles
-      for (let j = i + 1; j < nodes.length; j++) {
-        const p2 = nodes[j];
-        const dx = p.x - p2.x;
-        const dy = p.y - p2.y;
+    // Draw connecting constellation lines
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 110) {
+        if (dist < connectionDistance) {
+          const alpha = (1 - dist / connectionDistance) * 0.15;
           ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(96, 165, 250, ${0.25 * (1 - dist / 110)})`;
-          ctx.lineWidth = 0.8;
-          ctx.stroke();
-        }
-      }
-
-      // Connect with mouse
-      if (mouse.x !== null && mouse.y !== null) {
-        const dx = p.x - mouse.x;
-        const dy = p.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < mouse.radius) {
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(59, 130, 246, ${0.45 * (1 - dist / mouse.radius)})`;
-          ctx.lineWidth = 1.2;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`; // Indigo constellation line
+          ctx.lineWidth = 1;
           ctx.stroke();
         }
       }
     }
 
-    requestAnimationFrame(animate);
+    animationFrameId = requestAnimationFrame(animate);
   }
 
-  initNodes();
   animate();
+}
+
+// --- 4. Magnetic Button Effect ---
+function initMagneticButtons() {
+  const buttons = document.querySelectorAll('.btn-primary');
+
+  buttons.forEach(btn => {
+    btn.classList.add('magnetic');
+
+    document.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const btnX = rect.left + rect.width / 2;
+      const btnY = rect.top + rect.height / 2;
+
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const dx = mouseX - btnX;
+      const dy = mouseY - btnY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      const threshold = 75; // Proximity to activate the pull
+
+      if (dist < threshold) {
+        const pull = (threshold - dist) / threshold;
+        const moveX = dx * pull * 0.35;
+        const moveY = dy * pull * 0.35;
+
+        btn.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.03)`;
+      } else {
+        btn.style.transform = '';
+      }
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+}
+
+// --- 5. Aurora Background Orbs Injector ---
+function initAuroraBackground() {
+  const container = document.createElement('div');
+  container.className = 'bg-glow-container';
+  
+  const orb1 = document.createElement('div');
+  orb1.className = 'bg-glow-orb bg-glow-orb-1';
+  
+  const orb2 = document.createElement('div');
+  orb2.className = 'bg-glow-orb bg-glow-orb-2';
+  
+  container.appendChild(orb1);
+  container.appendChild(orb2);
+  document.body.insertBefore(container, document.body.firstChild);
+}
+
+// --- 6. Dynamic Robot Backdrop Injector ---
+function initRobotBackdrop() {
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+  
+  const img = document.createElement('img');
+  img.src = 'images/robot_background.png';
+  img.className = 'bg-robot';
+  img.alt = 'Robot Hologram';
+  
+  hero.appendChild(img);
+}
+
+// --- 7. Dynamic Downloads Robot Backdrop Injector ---
+function initDownloadsBackdrop() {
+  const downloadsSection = document.getElementById('downloads');
+  if (!downloadsSection) return;
+
+  const img = document.createElement('img');
+  img.src = 'images/robot_head_background.png';
+  img.className = 'bg-robot-head';
+  img.alt = 'Robot Brain Blueprint';
+
+  downloadsSection.appendChild(img);
 }
 
 /* ==========================================================================
@@ -1230,6 +1408,17 @@ function initScrollReveal() {
 
 // Global Initialization for All Features
 document.addEventListener('DOMContentLoaded', () => {
+  // Visual Effects & Animations
+  initCardGlowEffect();
+  initHeroParticles();
+  initMagneticButtons();
+  initAuroraBackground();
+  initRobotBackdrop();
+  initDownloadsBackdrop();
+  initStatsCounter();
+  initScrollReveal();
+
+  // Interactive UX Features
   initCourseSearch();
   initClickToCopy();
   initScrollToTop();
@@ -1238,9 +1427,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCommandPalette();
   initFaqAccordion();
   initGpaCalculator();
+  initLanguageSwitcher();
   initServiceWorker();
-  initScrollReveal();
 });
-
 
 
