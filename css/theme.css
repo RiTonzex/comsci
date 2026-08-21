@@ -1152,62 +1152,29 @@ section {
 }
 
 /* ==========================================================================
-   ACADEMIC QUALITY & ACHIEVEMENTS SECTION (ธีมน้ำเงินหรูหราสง่างาม CS SSKRU)
+   ACADEMIC QUALITY & ACHIEVEMENTS TAB (Inside #news)
    ========================================================================== */
-#quality-reports {
-  background: linear-gradient(135deg, #07152b 0%, #0f2b5c 50%, #153a75 100%);
-  color: #ffffff;
-  position: relative;
-  overflow: hidden;
-  padding: 85px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-#quality-reports::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.25) 0%, transparent 50%),
-              radial-gradient(circle at 85% 80%, rgba(234, 179, 8, 0.12) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-#quality-reports .container {
-  position: relative;
-  z-index: 2;
-}
-
-#quality-reports .section-subtitle {
-  color: #fde047;
-  background: rgba(250, 204, 21, 0.15);
-  border: 1px solid rgba(250, 204, 21, 0.4);
-  padding: 6px 18px;
-  border-radius: var(--radius-pill);
-  backdrop-filter: blur(8px);
-}
-
-#quality-reports .section-title {
-  color: #ffffff;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-}
-
-#quality-reports .section-desc {
-  color: rgba(255, 255, 255, 0.88);
-}
-
-#quality-reports .card-academic {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+#news-achieve .card-academic {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-#quality-reports .card-academic:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+#news-achieve .card-academic:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(15, 43, 92, 0.35);
+}
+
+.curr-main-tab-nav {
+  gap: 12px;
+  background: var(--bg-surface-subtle);
+  padding: 6px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  display: inline-flex;
+}
+
+.curr-main-tab-nav .tab-btn-pill {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 22px;
 }
 

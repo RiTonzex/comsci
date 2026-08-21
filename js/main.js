@@ -15,9 +15,8 @@ const translations = {
     brand_sub: 'คณะศิลปศาสตร์และวิทยาศาสตร์ มรภ.ศรีสะเกษ',
     nav_home: 'หน้าแรก',
     nav_about: 'เกี่ยวกับเรา',
-    nav_curriculum: 'หลักสูตร',
-    nav_schedule: 'แผนการเรียน',
-    nav_news: 'ข่าวสาร',
+    nav_curriculum: 'หลักสูตร & แผนการเรียน',
+    nav_news: 'ข่าวสาร & ผลงาน',
     nav_faculty: 'คณาจารย์',
     nav_downloads: 'ดาวน์โหลด',
     nav_contact: 'ติดต่อเรา',
@@ -103,10 +102,12 @@ const translations = {
     why_c3_title: 'ความยืดหยุ่น & ทำงานได้ทั่วโลก',
     why_c3_desc: 'สามารถเลือกรูปแบบทำงานออนไลน์จากทุกมุมโลก (Work from Anywhere) ประกอบอาชีพฟรีแลนซ์ หรือก้าวสู่นักธุรกิจสตาร์ทอัปไอที',
 
-    // Curriculum Section
-    curr_subtitle: '<i class="bi bi-stack"></i> SPECIALIZATION TRACKS',
-    curr_title: 'โครงสร้างกลุ่มวิชาความเชี่ยวชาญ',
-    curr_desc: 'ออกแบบหลักสูตรให้ครอบคลุม 3 ด้านหลักที่ตลาดแรงงานไอทีระดับสากลต้องการสูงสุด',
+    // Curriculum Section (Combined with Study Plan)
+    curr_subtitle: '<i class="bi bi-journal-bookmark-fill"></i> ACADEMIC CURRICULUM',
+    curr_title: 'โครงสร้างหลักสูตรและแผนการเรียน',
+    curr_desc: 'ครอบคลุม 3 กลุ่มวิชาความเชี่ยวชาญ และแผนการเรียนตลอด 4 ปี (หน่วยกิตรวม 133 หน่วยกิต)',
+    curr_main_tracks: '<i class="bi bi-stack"></i> กลุ่มวิชาความเชี่ยวชาญ (Specialization Tracks)',
+    curr_main_plan: '<i class="bi bi-calendar4-week"></i> แผนการศึกษา 4 ปี (8 ภาคเรียน)',
     track_btn_core: '<i class="bi bi-pc-display-horizontal"></i> วิทยาการคอมพิวเตอร์หลัก (Core CS)',
     track_btn_software: '<i class="bi bi-terminal-split"></i> เทคโนโลยีซอฟต์แวร์ (Software Tech)',
     track_btn_ai: '<i class="bi bi-cpu"></i> ปัญญาประดิษฐ์ & ข้อมูล (AI & Data Science)',
@@ -134,7 +135,7 @@ const translations = {
     curr_c10_title: '<i class="bi bi-terminal" style="color:var(--accent-pink);"></i> การเขียนโปรแกรมวิทยาการข้อมูล',
     curr_c10_desc: 'ปฏิบัติการเขียนโค้ดด้วยภาษา Python และ R เพื่อการสกัด ดึงข้อมูล และทำ Data Cleansing',
 
-    // Study Plan Section
+    // Study Plan Inside Curriculum
     plan_subtitle: '<i class="bi bi-calendar4-week"></i> 4-YEAR STUDY PLAN',
     plan_title: 'แผนการศึกษาและตารางวิชาเรียน 4 ปี',
     plan_desc: 'ตัวอย่างตารางวิชาหลักในการเรียนในแต่ละชั้นปีการศึกษา (หน่วยกิตรวมไม่น้อยกว่า 133 หน่วยกิต)',
@@ -189,29 +190,12 @@ const translations = {
     cat_elec: 'วิชาเลือกเฉพาะสาขา',
     cat_free_type: 'วิชาเลือกเสรี',
 
-    // Quality & Achievements Section
-    achieve_subtitle: '<i class="bi bi-award-fill"></i> QUALITY & ACHIEVEMENTS',
-    achieve_title: 'รายงานความสำเร็จและคุณภาพหลักสูตร',
-    achieve_desc: 'เอกสารสรุปผลการประเมินคุณภาพการศึกษาระดับหลักสูตรตามมาตรฐานและการสร้างคุณค่าระดับสากล',
-    achieve_c1_badge: '🏆 การรับรองมาตรฐาน AUN-QA',
-    achieve_c1_title: 'ผลการประเมินคุณภาพสาขาวิชาฯ ปีการศึกษา 2568',
-    achieve_c1_desc: 'ระดับคะแนนความพึงพอใจดีเยี่ยม ได้รับการประเมินคุณภาพครบทุกเกณฑ์',
-    achieve_c1_date: '<i class="bi bi-calendar3" style="color:#93c5fd;"></i> ประเมินเมื่อ: 16 – 17 สิงหาคม 2568',
-    achieve_c1_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> คณะศิลปศาสตร์และวิทยาศาสตร์ มรภ.ศรีสะเกษ',
-    achieve_c1_btn: 'อ่านสรุปเล่มประเมินฉบับเต็ม <i class="bi bi-arrow-right"></i>',
-    achieve_c2_badge: '🕶️ กิจกรรมเด่นเพื่อพัฒนาเยาวชน',
-    achieve_c2_title: 'การแข่งขันหุ่นยนต์ศรีสะเกษโรโบติกส์',
-    achieve_c2_desc: 'จัดแข่งขันหุ่นยนต์เยาวชนชิงถ้วยเกียรติยศสูงสุด รวมทั้งสิ้น 33 รายการ สำหรับระดับการศึกษาขั้นพื้นฐาน อาชีวศึกษา และอุดมศึกษาทั่วประเทศ',
-    achieve_c2_date: '<i class="bi bi-calendar3" style="color:#fef08a;"></i> วันที่จัดงาน: 27 – 28 มิถุนายน 2569',
-    achieve_c2_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> มหาวิทยาลัยราชภัฏศรีสะเกษ',
-    achieve_c2_btn1: '<i class="bi bi-images" style="color:#0284c7;"></i> ภาพกิจกรรม',
-    achieve_c2_btn2: '<i class="bi bi-globe"></i> เว็บไซต์กิจกรรม',
-
-    // News Section
+    // News Section (Combined with Achievements)
     news_subtitle: '<i class="bi bi-newspaper"></i> NEWS & KNOWLEDGE',
-    news_title: 'สาระความรู้ ข่าวสาร และกิจกรรม',
-    news_desc: 'ติดตามความเคลื่อนไหว ผลงานนวัตกรรม การจัดอบรม และกิจกรรมสร้างสรรค์ของสาขาวิชาฯ',
+    news_title: 'สาระความรู้ ข่าวสาร และรายงานผลงาน',
+    news_desc: 'ติดตามความเคลื่อนไหว ผลงานนวัตกรรม การจัดอบรม รายงานความสำเร็จ และกิจกรรมสร้างสรรค์',
     news_tab_all: '<i class="bi bi-grid-fill"></i> ทั้งหมด',
+    news_tab_achieve: '<i class="bi bi-award-fill"></i> รายงานความสำเร็จและคุณภาพ',
     news_tab_acad: '<i class="bi bi-cpu-fill"></i> งานวิจัยและนวัตกรรม',
     news_tab_act: '<i class="bi bi-trophy-fill"></i> กิจกรรมและผลงานนักศึกษา',
     news_feat_badge: '<i class="bi bi-star-fill"></i> ข่าวเด่นประจำเดือน',
@@ -229,6 +213,21 @@ const translations = {
     news_side3_tag: 'หลักสูตร',
     news_side3_title: 'เผยแพร่เล่ม มคอ.2 หลักสูตร วท.บ. วิทยาการคอมพิวเตอร์ (ปรับปรุง 2568) อย่างเป็นทางการ',
     news_side3_desc: 'ดาวน์โหลดรายละเอียดโครงสร้างรายวิชา แผนการศึกษา 4 ปี และผลลัพธ์ PLOs',
+
+    // Quality & Achievements
+    achieve_c1_badge: '🏆 การรับรองมาตรฐาน AUN-QA',
+    achieve_c1_title: 'ผลการประเมินคุณภาพสาขาวิชาฯ ปีการศึกษา 2568',
+    achieve_c1_desc: 'ระดับคะแนนความพึงพอใจดีเยี่ยม ได้รับการประเมินคุณภาพครบทุกเกณฑ์',
+    achieve_c1_date: '<i class="bi bi-calendar3" style="color:#93c5fd;"></i> ประเมินเมื่อ: 16 – 17 สิงหาคม 2568',
+    achieve_c1_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> คณะศิลปศาสตร์และวิทยาศาสตร์ มรภ.ศรีสะเกษ',
+    achieve_c1_btn: 'อ่านสรุปเล่มประเมินฉบับเต็ม <i class="bi bi-arrow-right"></i>',
+    achieve_c2_badge: '🕶️ กิจกรรมเด่นเพื่อพัฒนาเยาวชน',
+    achieve_c2_title: 'การแข่งขันหุ่นยนต์ศรีสะเกษโรโบติกส์',
+    achieve_c2_desc: 'จัดแข่งขันหุ่นยนต์เยาวชนชิงถ้วยเกียรติยศสูงสุด รวมทั้งสิ้น 33 รายการ สำหรับระดับการศึกษาขั้นพื้นฐาน อาชีวศึกษา และอุดมศึกษาทั่วประเทศ',
+    achieve_c2_date: '<i class="bi bi-calendar3" style="color:#fef08a;"></i> วันที่จัดงาน: 27 – 28 มิถุนายน 2569',
+    achieve_c2_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> มหาวิทยาลัยราชภัฏศรีสะเกษ',
+    achieve_c2_btn1: '<i class="bi bi-images" style="color:#0284c7;"></i> ภาพกิจกรรม',
+    achieve_c2_btn2: '<i class="bi bi-globe"></i> เว็บไซต์กิจกรรม',
 
     // Faculty Section
     fac_subtitle: '<i class="bi bi-people"></i> MEET OUR FACULTY',
@@ -295,9 +294,8 @@ const translations = {
     brand_sub: 'Faculty of Liberal Arts & Science, SSKRU',
     nav_home: 'Home',
     nav_about: 'About',
-    nav_curriculum: 'Curriculum',
-    nav_schedule: 'Study Plan',
-    nav_news: 'News',
+    nav_curriculum: 'Curriculum & Plan',
+    nav_news: 'News & Highlights',
     nav_faculty: 'Faculty',
     nav_downloads: 'Downloads',
     nav_contact: 'Contact',
@@ -383,10 +381,12 @@ const translations = {
     why_c3_title: 'Global Flexibility & Remote Work',
     why_c3_desc: 'Work remotely from anywhere worldwide, freelance with international clients, or launch your own tech startup.',
 
-    // Curriculum Section
-    curr_subtitle: '<i class="bi bi-stack"></i> SPECIALIZATION TRACKS',
-    curr_title: 'Specialized Track Structure',
-    curr_desc: 'Curriculum designed across 3 high-demand pillars for the modern global tech landscape.',
+    // Curriculum Section (Combined with Study Plan)
+    curr_subtitle: '<i class="bi bi-journal-bookmark-fill"></i> ACADEMIC CURRICULUM',
+    curr_title: 'Academic Curriculum & Study Plan',
+    curr_desc: 'Comprehensive 3 specialized career tracks and complete 4-year progression plan (133 total credits).',
+    curr_main_tracks: '<i class="bi bi-stack"></i> Specialization Tracks',
+    curr_main_plan: '<i class="bi bi-calendar4-week"></i> 4-Year Study Plan (8 Semesters)',
     track_btn_core: '<i class="bi bi-pc-display-horizontal"></i> Core Computer Science',
     track_btn_software: '<i class="bi bi-terminal-split"></i> Software Technology',
     track_btn_ai: '<i class="bi bi-cpu"></i> AI & Data Science',
@@ -414,7 +414,7 @@ const translations = {
     curr_c10_title: '<i class="bi bi-terminal" style="color:var(--accent-pink);"></i> Data Science Programming',
     curr_c10_desc: 'Hands-on Python and R programming for data extraction, manipulation, and pipeline engineering.',
 
-    // Study Plan Section
+    // Study Plan Inside Curriculum
     plan_subtitle: '<i class="bi bi-calendar4-week"></i> 4-YEAR STUDY PLAN',
     plan_title: '4-Year Study Plan & Curriculum Schedule',
     plan_desc: 'Recommended course progression across 8 semesters (Minimum total of 133 credits).',
@@ -469,29 +469,12 @@ const translations = {
     cat_elec: 'Major Elective',
     cat_free_type: 'Free Elective',
 
-    // Quality & Achievements Section
-    achieve_subtitle: '<i class="bi bi-award-fill"></i> QUALITY & ACHIEVEMENTS',
-    achieve_title: 'Quality & Achievements Report',
-    achieve_desc: 'Curriculum quality assurance reports and recognized national milestones.',
-    achieve_c1_badge: '🏆 AUN-QA Accreditation',
-    achieve_c1_title: 'Program Quality Assessment Results (AY 2025)',
-    achieve_c1_desc: 'Achieved Excellent satisfaction ratings, fully satisfying all rigorous academic criteria.',
-    achieve_c1_date: '<i class="bi bi-calendar3" style="color:#93c5fd;"></i> Assessment Date: August 16–17, 2025',
-    achieve_c1_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> Faculty of Liberal Arts & Science, SSKRU',
-    achieve_c1_btn: 'Read Full Assessment Report <i class="bi bi-arrow-right"></i>',
-    achieve_c2_badge: '🕶️ Youth & Regional Highlight',
-    achieve_c2_title: 'Sisaket Robotics Competition',
-    achieve_c2_desc: 'National youth robotics championship featuring 33 competitive categories across primary, vocational, and university divisions.',
-    achieve_c2_date: '<i class="bi bi-calendar3" style="color:#fef08a;"></i> Event Date: June 27–28, 2026',
-    achieve_c2_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> Sisaket Rajabhat University',
-    achieve_c2_btn1: '<i class="bi bi-images" style="color:#0284c7;"></i> Photo Gallery',
-    achieve_c2_btn2: '<i class="bi bi-globe"></i> Event Website',
-
-    // News Section
+    // News Section (Combined with Achievements)
     news_subtitle: '<i class="bi bi-newspaper"></i> NEWS & KNOWLEDGE',
-    news_title: 'News, Knowledge & Activities',
-    news_desc: 'Stay informed with our department updates, student achievements, and tech articles.',
+    news_title: 'News, Knowledge & Achievements',
+    news_desc: 'Stay informed with our department updates, student achievements, quality evaluations, and tech articles.',
     news_tab_all: '<i class="bi bi-grid-fill"></i> All News',
+    news_tab_achieve: '<i class="bi bi-award-fill"></i> Achievements & Quality',
     news_tab_acad: '<i class="bi bi-cpu-fill"></i> Research & Innovation',
     news_tab_act: '<i class="bi bi-trophy-fill"></i> Student Activities',
     news_feat_badge: '<i class="bi bi-star-fill"></i> Featured Story',
@@ -509,6 +492,21 @@ const translations = {
     news_side3_tag: 'Curriculum',
     news_side3_title: 'Official Release of B.Sc. in Computer Science TQF.2 Handbook (Revised 2025)',
     news_side3_desc: 'Download complete course descriptions, 4-year plan, and PLO learning outcomes.',
+
+    // Quality & Achievements
+    achieve_c1_badge: '🏆 AUN-QA Accreditation',
+    achieve_c1_title: 'Program Quality Assessment Results (AY 2025)',
+    achieve_c1_desc: 'Achieved Excellent satisfaction ratings, fully satisfying all rigorous academic criteria.',
+    achieve_c1_date: '<i class="bi bi-calendar3" style="color:#93c5fd;"></i> Assessment Date: August 16–17, 2025',
+    achieve_c1_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> Faculty of Liberal Arts & Science, SSKRU',
+    achieve_c1_btn: 'Read Full Assessment Report <i class="bi bi-arrow-right"></i>',
+    achieve_c2_badge: '🕶️ Youth & Regional Highlight',
+    achieve_c2_title: 'Sisaket Robotics Competition',
+    achieve_c2_desc: 'National youth robotics championship featuring 33 competitive categories across primary, vocational, and university divisions.',
+    achieve_c2_date: '<i class="bi bi-calendar3" style="color:#fef08a;"></i> Event Date: June 27–28, 2026',
+    achieve_c2_loc: '<i class="bi bi-geo-alt-fill" style="color:#fb7185;"></i> Sisaket Rajabhat University',
+    achieve_c2_btn1: '<i class="bi bi-images" style="color:#0284c7;"></i> Photo Gallery',
+    achieve_c2_btn2: '<i class="bi bi-globe"></i> Event Website',
 
     // Faculty Section
     fac_subtitle: '<i class="bi bi-people"></i> MEET OUR FACULTY',
@@ -561,7 +559,7 @@ const translations = {
     footer_col2_title: 'About University',
     footer_link_about: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Philosophy & Vision',
     footer_link_fac: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Faculty Directory',
-    footer_link_news: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Research & Innovation',
+    footer_link_news: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Research & Highlights',
     footer_link_sskru: '<i class="bi bi-chevron-right" style="font-size:0.75rem;"></i> Sisaket Rajabhat Univ.',
     footer_col3_title: 'Direct Contact',
     footer_contact_bldg: '<i class="bi bi-building" style="color:var(--accent-pink);"></i> Floor 5, Building 4 (LASC)',
@@ -949,9 +947,24 @@ function switchTab(tabId, btn) {
   btn.classList.add('active');
 }
 
+function switchCurriculumMainTab(tabId, btn) {
+  document.querySelectorAll('.curr-main-content').forEach(c => c.style.display = 'none');
+  document.querySelectorAll('.curr-main-tab-nav .tab-btn-pill').forEach(b => b.classList.remove('active'));
+  const target = document.getElementById(tabId);
+  if (target) target.style.display = 'block';
+  if (btn) btn.classList.add('active');
+}
+
+function showCurriculumPlanTab() {
+  const planTabBtn = document.getElementById('currPlanTabBtn');
+  if (planTabBtn) {
+    switchCurriculumMainTab('curr-section-plan', planTabBtn);
+  }
+}
+
 function switchTrack(trackId, btn) {
   document.querySelectorAll('.track-content').forEach(c => c.style.display = 'none');
-  document.querySelectorAll('#curriculum .tab-btn-pill').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#curr-section-tracks .tab-btn-pill').forEach(b => b.classList.remove('active'));
   const target = document.getElementById(trackId);
   if (target) target.style.display = 'block';
   btn.classList.add('active');
@@ -959,7 +972,7 @@ function switchTrack(trackId, btn) {
 
 function switchYear(planId, btn) {
   document.querySelectorAll('.year-content').forEach(c => c.style.display = 'none');
-  document.querySelectorAll('#schedule .tab-btn-pill').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#curr-section-plan .tab-btn-pill').forEach(b => b.classList.remove('active'));
   const target = document.getElementById(planId);
   if (target) target.style.display = 'block';
   btn.classList.add('active');
@@ -974,6 +987,8 @@ function switchNewsTab(tabId, btn) {
 }
 
 window.switchTab = switchTab;
+window.switchCurriculumMainTab = switchCurriculumMainTab;
+window.showCurriculumPlanTab = showCurriculumPlanTab;
 window.switchTrack = switchTrack;
 window.switchYear = switchYear;
 window.switchNewsTab = switchNewsTab;
@@ -993,8 +1008,6 @@ function initNavScrollSpy() {
     'about': 'about',
     'why-cs': 'about',
     'curriculum': 'curriculum',
-    'schedule': 'schedule',
-    'quality-reports': 'curriculum',
     'news': 'news',
     'lecturers': 'lecturers',
     'downloads': 'downloads',
