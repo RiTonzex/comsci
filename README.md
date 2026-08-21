@@ -43,3 +43,16 @@ comsci-web/
 
 ## 💻 วิธีการเปิดใช้งาน (Getting Started)
 สามารถเปิดไฟล์ `index.html` บนเว็บเบราว์เซอร์ (Google Chrome, Microsoft Edge, Safari) ได้ทันทีโดยไม่ต้องติดตั้งโปรแกรมเสริม
+
+---
+
+## 🚀 การ Deploy ขึ้น Vercel (Hosting)
+
+โปรเจกต์นี้ตั้งค่าไฟล์ [`vercel.json`](file:///d:/final/comsci/vercel.json) ไว้เรียบร้อยแล้ว รองรับการ Deploy อัตโนมัติผ่าน GitHub:
+
+1. นำโค้ดขึ้น GitHub (`git push origin main`)
+2. ล็อกอินเข้าสู่ [Vercel.com](https://vercel.com)
+3. กด **Add New... > Project** แล้วเลือก Repository `RiTonzex/comsci`
+4. กดปุ่ม **Deploy** (Vercel จะสร้าง URL ฟรี เช่น `https://comsci-xxx.vercel.app`)
+5. ทุกครั้งที่มีการ `git push` ขึ้น main Vercel จะอัปเดตเว็บให้อัตโนมัติ (CI/CD)
+
